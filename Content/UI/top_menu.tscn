@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1348v1jnlpxd"]
+
+[ext_resource type="Texture2D" uid="uid://24gsc7rdwcjh" path="res://Art/smol_heart.png" id="1_sbbei"]
+[ext_resource type="Texture2D" uid="uid://pivaxa1nwnhy" path="res://Art/ui_brkt.png" id="2_xu4ci"]
+[ext_resource type="Texture2D" uid="uid://djl3ymocb8wyb" path="res://Art/coin.png" id="3_ud0ju"]
+[ext_resource type="Texture2D" uid="uid://bel3e2lapcmud" path="res://Art/tmp_coin.png" id="4_s5sai"]
+[ext_resource type="Texture2D" uid="uid://c814yr6s3mdey" path="res://Art/tmp_roomname.png" id="5_vo4f2"]
+
+[node name="TopMenu" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 224.0
+offset_bottom = 12.0
+color = Color(0, 0, 0, 1)
+
+[node name="char2" type="Sprite2D" parent="."]
+position = Vector2(112, 6)
+texture = ExtResource("1_sbbei")
+
+[node name="char8" type="Sprite2D" parent="."]
+position = Vector2(97, 6)
+texture = ExtResource("2_xu4ci")
+
+[node name="char9" type="Sprite2D" parent="."]
+position = Vector2(127, 6)
+texture = ExtResource("2_xu4ci")
+flip_h = true
+
+[node name="char3" type="Sprite2D" parent="."]
+position = Vector2(100, 6)
+texture = ExtResource("1_sbbei")
+
+[node name="char4" type="Sprite2D" parent="."]
+position = Vector2(124, 6)
+texture = ExtResource("1_sbbei")
+
+[node name="char5" type="Sprite2D" parent="."]
+position = Vector2(6, 5)
+texture = ExtResource("3_ud0ju")
+
+[node name="char6" type="Sprite2D" parent="."]
+position = Vector2(14, 6)
+texture = ExtResource("4_s5sai")
+
+[node name="char7" type="Sprite2D" parent="."]
+position = Vector2(206, 6)
+texture = ExtResource("5_vo4f2")

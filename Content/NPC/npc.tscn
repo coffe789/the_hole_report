@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbbruyu6qrvj1"]
+
+[ext_resource type="PackedScene" uid="uid://btq51iwxqatrc" path="res://Content/Util/interactable.tscn" id="1_4ys2v"]
+[ext_resource type="Script" path="res://Content/NPC/npc.gd" id="1_chw6h"]
+[ext_resource type="Script" path="res://Content/Resource/dialogue.gd" id="2_4ofe2"]
+
+[node name="NPC" type="Sprite2D"]
+process_mode = 3
+script = ExtResource("1_chw6h")
+dialogue_offset = Vector2(-16, -12)
+
+[node name="Interactable" parent="." instance=ExtResource("1_4ys2v")]
+
+[node name="Dialogue" type="Node" parent="."]
+script = ExtResource("2_4ofe2")
