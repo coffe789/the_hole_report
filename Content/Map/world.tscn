@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq2rublwk60s4"]
+[gd_scene load_steps=16 format=3 uid="uid://bq2rublwk60s4"]
 
 [ext_resource type="Texture2D" uid="uid://s5btavi7ibmb" path="res://Art/bg0.png" id="1_2yt03"]
 [ext_resource type="TileSet" uid="uid://d3fja5bmjb0no" path="res://Content/Map/tile_map.tres" id="1_rgccw"]
@@ -11,7 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://5njq07xfudk2" path="res://Art/croco_jr.png" id="10_77050"]
 [ext_resource type="PackedScene" uid="uid://dbbruyu6qrvj1" path="res://Content/NPC/npc.tscn" id="12_5073p"]
 [ext_resource type="PackedScene" uid="uid://djuy8mo8nwe4i" path="res://Content/Map/room.tscn" id="12_ngnwq"]
+[ext_resource type="Texture2D" uid="uid://fo03wacvy41t" path="res://Art/bloblin.png" id="13_7lf2y"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="13_krhj3"]
 [ext_resource type="Script" path="res://Content/Resource/dialogue.gd" id="13_lj3s4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucye3"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_uklxy")
@@ -30,6 +34,16 @@ script = ExtResource("2_ewx0t")
 
 [node name="Player" parent="." instance=ExtResource("5_axxvd")]
 position = Vector2(96, 104)
+
+[node name="bloblin" type="Sprite2D" parent="."]
+position = Vector2(255, 97)
+texture = ExtResource("13_7lf2y")
+
+[node name="TxHitbox" parent="bloblin" groups=["enemy_attack"] instance=ExtResource("13_krhj3")]
+position = Vector2(-1, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bloblin/TxHitbox"]
+shape = SubResource("CircleShape2D_ucye3")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_rgccw")
@@ -51,44 +65,48 @@ position = Vector2(112, 64)
 [node name="Room2" parent="." instance=ExtResource("12_ngnwq")]
 position = Vector2(336, 64)
 
-[node name="NPC" parent="." instance=ExtResource("12_5073p")]
+[node name="Croco" parent="." instance=ExtResource("12_5073p")]
 position = Vector2(125, 104)
 texture = ExtResource("3_gr0vp")
 
-[node name="Interactable" parent="NPC" index="0"]
+[node name="Interactable" parent="Croco" index="0"]
 position = Vector2(1, 8)
 
-[node name="dir" parent="NPC/Interactable" index="1"]
+[node name="dir" parent="Croco/Interactable" index="1"]
 position = Vector2(-1, -16)
 
-[node name="Dialogue" parent="NPC" index="1"]
-dialogue = Array[String](["hellow player this is gonna be a long one but please stay with me. Blah blah blah", "what's up"])
+[node name="Dialogue" parent="Croco" index="1"]
+dialogue = Array[String](["our picnic is ruined!!!", "how could you do this?"])
 
-[node name="Dialogue2" type="Node" parent="NPC"]
+[node name="Dialogue2" type="Node" parent="Croco"]
 script = ExtResource("13_lj3s4")
 is_player = true
-dialogue = Array[String](["not much", "hbu"])
+dialogue = Array[String](["Sorry about that. ", "I never expected someone was having a picnic at the bottom of this hole. "])
 
-[node name="NPC2" parent="." instance=ExtResource("12_5073p")]
+[node name="Dialogue3" type="Node" parent="Croco"]
+script = ExtResource("13_lj3s4")
+dialogue = Array[String](["woah you fell from a sky hole??", "I guess our blanket saved you then huh"])
+
+[node name="CrocoJr" parent="." instance=ExtResource("12_5073p")]
 position = Vector2(80, 104)
 texture = ExtResource("10_77050")
 flip_h = true
 
-[node name="Interactable" parent="NPC2" index="0"]
+[node name="Interactable" parent="CrocoJr" index="0"]
 position = Vector2(1, 8)
 
-[node name="dir" parent="NPC2/Interactable" index="1"]
+[node name="dir" parent="CrocoJr/Interactable" index="1"]
 position = Vector2(-2, -11)
 
-[node name="Dialogue" parent="NPC2" index="1"]
-dialogue = Array[String](["hellow player", "what's up"])
+[node name="Dialogue" parent="CrocoJr" index="1"]
+dialogue = Array[String](["*cries*", "YOU MONSTER"])
 
-[node name="Dialogue2" type="Node" parent="NPC2"]
+[node name="Dialogue2" type="Node" parent="CrocoJr"]
 script = ExtResource("13_lj3s4")
 is_player = true
-dialogue = Array[String](["not much", "hbu"])
+dialogue = Array[String](["..sorry"])
 
-[editable path="NPC"]
-[editable path="NPC/Interactable"]
-[editable path="NPC2"]
-[editable path="NPC2/Interactable"]
+[editable path="Croco"]
+[editable path="Croco/Interactable"]
+[editable path="CrocoJr"]
+[editable path="CrocoJr/Interactable"]

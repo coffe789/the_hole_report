@@ -5,7 +5,7 @@ var has_ended_jump
 func enter():
 	has_ended_jump = false
 	target.velocity.y = target.JUMP_SPEED
-	target.get_node("Anim").play("jump")
+	target.get_node("Anim").custom_play("jump")
 	target.get_node("PrejumpTimer").stop()
 
 func update(delta):

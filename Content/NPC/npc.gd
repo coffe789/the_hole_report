@@ -12,16 +12,19 @@ func _ready():
 			dialogues.append(c)
 
 func on_interact():
-	if get_tree().paused: return
-	$Interactable.visible = false
+	var p = Global.get_unique("player")
+	if !get_tree().paused && p.is_on_floor():
+		$Interactable.visible = false
+		p.velocity = Vector2.ZERO
 	
-	get_tree().paused = true
-	for d in dialogues:
-		var tb = next_dialogue()
-		await tb.done
-	idx = 0
-	get_tree().paused = false
-	$Interactable.visible = true
+		get_tree().paused = true
+		for d in dialogues:
+			var tb = next_dialogue()
+			await tb.done
+		idx = 0
+
+		get_tree().paused = false
+		$Interactable.visible = true
 
 var idx = 0
 func next_dialogue():
@@ -30,7 +33,6 @@ func next_dialogue():
 		var p = Global.get_unique("player")
 		add_child.call_deferred(tb)
 		if p:tb.offset = p.global_position-global_position + dialogue_offset
-		print(p.global_position-global_position)
 	else:
 		add_child.call_deferred(tb)
 		tb.offset = dialogue_offset

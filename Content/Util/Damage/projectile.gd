@@ -1,4 +1,4 @@
-extends DamageHitbox
+extends TxHitbox
 
 @export var direction := Vector2.ZERO
 @export var speed := 200.0
@@ -39,7 +39,7 @@ func _on_area_exited(area):
 		queue_free()
 
 func _on_area_entered(area):
-	if area is DamageHurtbox:
+	if area is RxHitbox:
 		if from_player and area.get_parent().is_in_group("enemy"):
 			queue_free()
 		elif !from_player and area.get_parent().is_in_group("player"):

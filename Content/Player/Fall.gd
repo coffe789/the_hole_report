@@ -7,10 +7,9 @@ func update(delta):
 	target.move(delta)
 	
 	if target.velocity.y > 50:
-		target.get_node("Anim").play("fall")
+		target.get_node("Anim").custom_play("fall")
 	else:
-		target.get_node("Anim").stop()
-		target.get_node("Sprite2D").frame = 0
+		target.get_node("Anim").custom_play("idle")
 
 func exit():
 	pass

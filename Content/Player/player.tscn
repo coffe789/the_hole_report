@@ -1,12 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://o7ajaubg1qid"]
+[gd_scene load_steps=21 format=3 uid="uid://o7ajaubg1qid"]
 
 [ext_resource type="Script" path="res://Content/Util/Statemachine/StateMachine.gd" id="1_a2drm"]
 [ext_resource type="Script" path="res://Content/Player/player.gd" id="1_jlimy"]
 [ext_resource type="Texture2D" uid="uid://dxbxe76ing1ep" path="res://Art/char-sheet.png" id="2_e4506"]
+[ext_resource type="Script" path="res://Content/Player/Anim.gd" id="3_t0pj7"]
 [ext_resource type="Script" path="res://Content/Player/Transitions.gd" id="4_6xyjs"]
 [ext_resource type="Script" path="res://Content/Player/Ground.gd" id="4_gqrb4"]
 [ext_resource type="Script" path="res://Content/Player/Jump.gd" id="5_s68ql"]
 [ext_resource type="Script" path="res://Content/Player/Fall.gd" id="6_00sl3"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="9_gbjrn"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="10_0gcvt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l55rt"]
 size = Vector2(6, 10)
@@ -24,6 +27,46 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TxHitbox:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uxo1k"]
+resource_name = "attack"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.101943, 0.202043, 0.301307, 0.399359),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TxHitbox:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.205297, 0.235939),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_qibqy"]
@@ -70,19 +113,39 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4mq73"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akj71"]
 _data = {
 "RESET": SubResource("Animation_8wkdf"),
+"attack": SubResource("Animation_uxo1k"),
 "fall": SubResource("Animation_qibqy"),
+"idle": SubResource("Animation_4mq73"),
 "jump": SubResource("Animation_6orsi"),
 "walk": SubResource("Animation_23hg2")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uik2f"]
 size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_600s1"]
+size = Vector2(16, 10)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_jlimy")
@@ -94,12 +157,13 @@ shape = SubResource("RectangleShape2D_l55rt")
 position = Vector2(0, 7)
 texture = ExtResource("2_e4506")
 offset = Vector2(2, -7)
-hframes = 4
+hframes = 8
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_akj71")
 }
+script = ExtResource("3_t0pj7")
 
 [node name="SM" type="Node" parent="."]
 script = ExtResource("1_a2drm")
@@ -128,3 +192,23 @@ shape = SubResource("RectangleShape2D_uik2f")
 process_callback = 0
 wait_time = 0.12
 one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.4
+one_shot = true
+
+[node name="RxHitbox" parent="." instance=ExtResource("9_gbjrn")]
+i_seconds = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+shape = SubResource("RectangleShape2D_l55rt")
+
+[node name="TxHitbox" parent="." instance=ExtResource("10_0gcvt")]
+position = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
+shape = SubResource("RectangleShape2D_600s1")
+metadata/_edit_lock_ = true
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]

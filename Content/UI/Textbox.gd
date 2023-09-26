@@ -31,18 +31,19 @@ func update():
 			d_index += 1
 
 func reset():
+	$RichTextLabel.visible_characters = -1
 	$RichTextLabel.text = dialogue[d_index]
 	position.y = offset.y - (LINE_HEIGHT * $RichTextLabel.get_line_count() - 1)/2
 	size.y = LINE_HEIGHT * $RichTextLabel.get_line_count() + $RichTextLabel.position.y
 	$Tail.position.y = size.y
-	$RichTextLabel.text = ""
+	$RichTextLabel.visible_characters = 0
 
 func append_new_letter():
-	var label = $RichTextLabel
-	if label.text.length() < dialogue[d_index].length():
-		var this_char = dialogue[d_index][label.text.length()]
-		label.text += this_char
-		if label.text.length() == dialogue[d_index].length():
+	if $RichTextLabel.visible_characters < dialogue[d_index].length():
+		var this_char = dialogue[d_index][$RichTextLabel.visible_characters]
+#		label.text += this_char
+		$RichTextLabel.visible_characters += 1
+		if $RichTextLabel.visible_characters >= dialogue[d_index].length():
 			return AppendStatus.DONE
 		if (this_char == '.' or this_char == '?' or this_char == '!' or this_char == ','):
 			return AppendStatus.PUNCTUATION
@@ -53,10 +54,12 @@ func append_new_letter():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if d_index > dialogue.size() - 1:
+			await get_tree().physics_frame
+			await get_tree().physics_frame
 			emit_signal("done")
 			queue_free()
-		elif $RichTextLabel.text.length() < dialogue[d_index].length():
-			$RichTextLabel.text = dialogue[d_index]
+		elif $RichTextLabel.visible_characters < $RichTextLabel.text.length():
+			$RichTextLabel.visible_characters = $RichTextLabel.text.length()
 		else:
 			reset()
 			$Timer.start(CHAR_TIME)
