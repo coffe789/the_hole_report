@@ -24,6 +24,7 @@ func _ready():
 func _on_area_entered(area):
 	if area.is_in_group("player_room_finder"):
 		Global.room_changed.emit(self)
+		Global.update_room_name(name)
 		snap_player_to_room()
 		
 		if resetables:

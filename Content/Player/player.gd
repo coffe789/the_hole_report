@@ -32,7 +32,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump"):
 		$PrejumpTimer.start()
 	$SM.update(delta)
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("attack"):
 		if !is_attacking:
 			$Anim.custom_play("attack")
 			$AttackTimer.start()
@@ -42,8 +42,7 @@ func _physics_process(delta):
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir && !is_attacking:
 		$Sprite2D.scale.x = sign(dir)
-		$TxHitbox.position.x = 5 * sign(dir)
-
+		$TxHitbox.position.x = 10 * sign(dir)
 
 func _on_rx_hitbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
@@ -57,11 +56,13 @@ func _on_rx_hitbox_damage_received(amount, damage_source):
 func set_health(new_amount):
 	if new_amount < hp:
 		$SM.transition_state($SM/States/Fall)
+		Global.update_hearts(new_amount)
 		$RxHitbox.do_iframes()
 		modulate.a = 0.5
 		
 		velocity = Vector2(-sign($Sprite2D.scale.x) * 300, -80)
 		Global.do_freeze_frames(0.1)
 	if new_amount <= 0:
+		pass
 #		die()
-		new_amount = 4
+	hp = new_amount

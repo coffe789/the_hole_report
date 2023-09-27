@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba1sts87opv47"]
+
+[ext_resource type="Script" path="res://Content/global.gd" id="1_mnwti"]
+[ext_resource type="PackedScene" uid="uid://d1348v1jnlpxd" path="res://Content/UI/top_menu.tscn" id="2_ypoph"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_mnwti")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TopMenu" parent="CanvasLayer" instance=ExtResource("2_ypoph")]

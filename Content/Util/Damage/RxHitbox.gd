@@ -3,7 +3,7 @@ class_name RxHitbox
 signal damage_received(amount, damage_source)
 
 # invincibility timer
-@export var i_seconds = .2
+@export var i_seconds = .4
 var i_timer = Timer.new()
 
 @export var hit_disable_time = 0.25

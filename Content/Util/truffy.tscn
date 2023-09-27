@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1wbq5wuh2qh6"]
+
+[ext_resource type="Script" path="res://Content/Util/truffy.gd" id="1_xjym3"]
+[ext_resource type="Texture2D" uid="uid://dvhmcqpjwbfhq" path="res://Art/coin-sheet.png" id="2_scka4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7fnn"]
+size = Vector2(3, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y1svh"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_idg4q"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rvg4g"]
+resource_name = "spin"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ni5k0"]
+_data = {
+"RESET": SubResource("Animation_idg4q"),
+"spin": SubResource("Animation_rvg4g")
+}
+
+[node name="Truffy" type="CharacterBody2D"]
+collision_layer = 128
+script = ExtResource("1_xjym3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("2_scka4")
+offset = Vector2(0, -0.5)
+hframes = 4
+vframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_p7fnn")
+debug_color = Color(0.619608, 0.6, 0.701961, 0.419608)
+
+[node name="SeekRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeekRange"]
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_y1svh")
+debug_color = Color(0.662745, 1, 0.682353, 0)
+
+[node name="CollectRange" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectRange"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_p7fnn")
+debug_color = Color(0.619608, 0.6, 0.701961, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_ni5k0")
+}
+
+[connection signal="body_entered" from="SeekRange" to="." method="_on_seek_range_entered"]
+[connection signal="body_entered" from="CollectRange" to="." method="_on_collect_range_body_entered"]

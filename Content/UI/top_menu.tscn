@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://24gsc7rdwcjh" path="res://Art/smol_heart.png" id="1_sbbei"]
 [ext_resource type="Texture2D" uid="uid://pivaxa1nwnhy" path="res://Art/ui_brkt.png" id="2_xu4ci"]
 [ext_resource type="Texture2D" uid="uid://djl3ymocb8wyb" path="res://Art/coin.png" id="3_ud0ju"]
-[ext_resource type="Texture2D" uid="uid://bel3e2lapcmud" path="res://Art/tmp_coin.png" id="4_s5sai"]
-[ext_resource type="Texture2D" uid="uid://c814yr6s3mdey" path="res://Art/tmp_roomname.png" id="5_vo4f2"]
+[ext_resource type="FontFile" uid="uid://lyqqr27plodx" path="res://Content/Resource/numfont_small.ttf" id="4_mk6tg"]
+[ext_resource type="FontFile" uid="uid://b2yoma8fuinf1" path="res://Content/Resource/roomfont.ttf" id="5_cdx1u"]
 
 [node name="TopMenu" type="Node2D"]
 
@@ -13,35 +13,49 @@ offset_right = 224.0
 offset_bottom = 12.0
 color = Color(0, 0, 0, 1)
 
-[node name="char2" type="Sprite2D" parent="."]
-position = Vector2(112, 6)
-texture = ExtResource("1_sbbei")
-
-[node name="char8" type="Sprite2D" parent="."]
+[node name="BO" type="Sprite2D" parent="."]
 position = Vector2(97, 6)
 texture = ExtResource("2_xu4ci")
 
-[node name="char9" type="Sprite2D" parent="."]
+[node name="BC" type="Sprite2D" parent="."]
 position = Vector2(127, 6)
 texture = ExtResource("2_xu4ci")
 flip_h = true
 
-[node name="char3" type="Sprite2D" parent="."]
+[node name="H1" type="Sprite2D" parent="."]
 position = Vector2(100, 6)
 texture = ExtResource("1_sbbei")
 
-[node name="char4" type="Sprite2D" parent="."]
+[node name="H2" type="Sprite2D" parent="."]
+position = Vector2(112, 6)
+texture = ExtResource("1_sbbei")
+
+[node name="H3" type="Sprite2D" parent="."]
 position = Vector2(124, 6)
 texture = ExtResource("1_sbbei")
 
-[node name="char5" type="Sprite2D" parent="."]
+[node name="COIN" type="Sprite2D" parent="."]
 position = Vector2(6, 5)
 texture = ExtResource("3_ud0ju")
 
-[node name="char6" type="Sprite2D" parent="."]
-position = Vector2(14, 6)
-texture = ExtResource("4_s5sai")
+[node name="MoneyText" type="RichTextLabel" parent="."]
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("4_mk6tg")
+text = "x0"
+text_direction = 1
 
-[node name="char7" type="Sprite2D" parent="."]
-position = Vector2(206, 6)
-texture = ExtResource("5_vo4f2")
+[node name="RoomText" type="RichTextLabel" parent="."]
+offset_left = 136.0
+offset_top = 2.0
+offset_right = 308.0
+offset_bottom = 18.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("5_cdx1u")
+bbcode_enabled = true
+text = "[right]THE HOLE[/right]"
+scroll_active = false
+text_direction = 1

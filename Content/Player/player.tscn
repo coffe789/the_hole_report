@@ -31,14 +31,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TxHitbox:monitorable")
+tracks/1/path = NodePath("TxHitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_uxo1k"]
@@ -59,14 +59,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TxHitbox:monitorable")
+tracks/1/path = NodePath("TxHitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.205297, 0.235939),
+"times": PackedFloat32Array(0, 0.204404, 0.257685),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_qibqy"]
@@ -82,6 +82,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_4mq73"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_6orsi"]
@@ -116,21 +131,6 @@ tracks/0/keys = {
 "values": [1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_4mq73"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akj71"]
 _data = {
 "RESET": SubResource("Animation_8wkdf"),
@@ -145,9 +145,10 @@ _data = {
 size = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_600s1"]
-size = Vector2(16, 10)
+size = Vector2(18, 17)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["can_collect_truffies", "player"]]
+collision_layer = 2
 script = ExtResource("1_jlimy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -204,11 +205,12 @@ i_seconds = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
 shape = SubResource("RectangleShape2D_l55rt")
 
-[node name="TxHitbox" parent="." instance=ExtResource("10_0gcvt")]
-position = Vector2(5, 0)
+[node name="TxHitbox" parent="." groups=["player_attack"] instance=ExtResource("10_0gcvt")]
+position = Vector2(10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
 shape = SubResource("RectangleShape2D_600s1")
+disabled = true
 metadata/_edit_lock_ = true
 
 [connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
