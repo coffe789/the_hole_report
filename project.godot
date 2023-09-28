@@ -53,6 +53,7 @@ attack={
 2d_physics/layer_3="damage"
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="interact"
+2d_physics/layer_6="spike"
 
 [rendering]
 

@@ -21,18 +21,24 @@ func _ready():
 		resetables = $Resetables.create_scene()
 		$Resetables.queue_free()
 
+func enter():
+	Global.room_changed.emit(self)
+	Global.update_room_name(name)
+	snap_player_to_room()
+	
+	if resetables:
+		call_deferred("add_child", resetables.instantiate())
+
+func exit():
+	$Resetables.queue_free()
+
 func _on_area_entered(area):
 	if area.is_in_group("player_room_finder"):
-		Global.room_changed.emit(self)
-		Global.update_room_name(name)
-		snap_player_to_room()
-		
-		if resetables:
-			call_deferred("add_child", resetables.instantiate())
+		enter()
 
 func _on_area_exited(area):
 	if resetables and area.is_in_group("player_room_finder"):
-		$Resetables.queue_free()
+		exit()
 
 const snap_fatness = 6.0/2 + 1
 const snap_up_height = 10.0 / 2 + 1

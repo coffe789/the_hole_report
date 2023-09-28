@@ -213,4 +213,12 @@ shape = SubResource("RectangleShape2D_600s1")
 disabled = true
 metadata/_edit_lock_ = true
 
+[node name="SpikeDetect" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeDetect"]
+shape = SubResource("RectangleShape2D_l55rt")
+
 [connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
+[connection signal="body_entered" from="SpikeDetect" to="." method="_on_spike_detect_body_entered"]

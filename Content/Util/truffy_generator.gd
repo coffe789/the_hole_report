@@ -1,6 +1,6 @@
 extends Node2D
 
-var value : int = 15
+var value : int = 17
 
 func _ready() -> void:
 	generate_truffies()
@@ -26,10 +26,10 @@ func generate_truffies(amount : int = value) -> void:
 
 
 func _on_timer_timeout() -> void:
-	generate_truffies(randi_range(1, 200))
+	generate_truffies(value)
+	queue_free()
 
-
-func _on_child_exiting_tree(x: Node) -> void:
-	if get_children().size() == 0:
-		await get_tree().create_timer(5.0).timeout
-		queue_free()
+#func _on_child_exiting_tree(x: Node) -> void:
+#	if get_children().size() == 0:
+#		await get_tree().create_timer(5.0).timeout
+#		queue_free()

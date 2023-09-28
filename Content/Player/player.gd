@@ -11,6 +11,7 @@ var is_attacking = false
 var hp = MAX_HP : set=set_health
 
 func _ready():
+	$RxHitbox.i_timer.timeout.connect(func reset_alpha(): modulate.a = 1)
 	$SM.init_machine(self, $SM/States/Ground)
 
 func move(delta):
@@ -47,22 +48,40 @@ func _physics_process(delta):
 func _on_rx_hitbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
 		hp -= amount
-#		var new_health = current_health - amount
-#		Global.update_player_health.emit(new_health)
-#		Global.update_health_ui.emit(current_health)
-		await $RxHitbox.i_timer.timeout
-		modulate.a = 1
 
 func set_health(new_amount):
+	Global.update_hearts(new_amount)
+	if new_amount <= 0:
+		die()
+		return false
 	if new_amount < hp:
 		$SM.transition_state($SM/States/Fall)
-		Global.update_hearts(new_amount)
 		$RxHitbox.do_iframes()
 		modulate.a = 0.5
 		
 		velocity = Vector2(-sign($Sprite2D.scale.x) * 300, -80)
 		Global.do_freeze_frames(0.1)
-	if new_amount <= 0:
-		pass
-#		die()
 	hp = new_amount
+	return true
+
+func spike_respawn():
+	if set_health(hp - 1):
+		velocity = Vector2.ZERO
+		global_position = Global.spike_respawn_pos
+		$SM.transition_state($SM/States/Fall)
+		$Anim.play("idle")
+		
+
+func die():
+	visible = false
+	await Global.death_wipe()
+	set_health(MAX_HP)
+	velocity = Vector2.ZERO
+	global_position = Global.death_respawn_pos
+	$SM.transition_state($SM/States/Fall)
+	$Anim.play("idle")
+	visible = true
+
+
+func _on_spike_detect_body_entered(body):
+	spike_respawn()
