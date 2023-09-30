@@ -19,13 +19,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_walk_dectector_barrier_detected(type, direction):
+func _on_walk_dectector_barrier_detected(_type, direction):
 	facing = -direction
 
 
 func _on_rx_hitbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("player_attack"):
-		hp -= 1
+		hp -= amount
 		if hp == 0:
 			queue_free()
 		else:

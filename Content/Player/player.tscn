@@ -148,6 +148,7 @@ size = Vector2(1, 1)
 size = Vector2(18, 17)
 
 [node name="Player" type="CharacterBody2D" groups=["can_collect_truffies", "player"]]
+position = Vector2(0, -5)
 collision_layer = 2
 script = ExtResource("1_jlimy")
 

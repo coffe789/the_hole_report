@@ -39,6 +39,3 @@ func next_dialogue():
 	tb.dialogue = dialogues[idx].dialogue
 	idx += 1
 	return tb
-
-func _process(delta):
-	pass

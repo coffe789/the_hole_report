@@ -83,5 +83,5 @@ func die():
 	visible = true
 
 
-func _on_spike_detect_body_entered(body):
+func _on_spike_detect_body_entered(_body):
 	spike_respawn()

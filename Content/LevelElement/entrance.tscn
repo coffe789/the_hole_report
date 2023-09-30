@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpcy01pkad02j"]
+
+[ext_resource type="Script" path="res://Content/LevelElement/entrance.gd" id="1_gndq7"]
+[ext_resource type="PackedScene" uid="uid://btq51iwxqatrc" path="res://Content/Util/interactable.tscn" id="1_sbp5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5nxi"]
+size = Vector2(8, 5)
+
+[node name="Entrance" type="Node2D"]
+script = ExtResource("1_gndq7")
+
+[node name="To" type="Marker2D" parent="."]
+
+[node name="Interactable" parent="." instance=ExtResource("1_sbp5e")]
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+shape = SubResource("RectangleShape2D_o5nxi")
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+
+[editable path="Interactable"]

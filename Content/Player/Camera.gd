@@ -24,8 +24,9 @@ func on_room_changed(room):
 	elif room != current_room:
 		set_camera_limits(room.get_node("CollisionShape2D"))
 		
-		get_tree().paused = true
-		await get_tree().create_timer(0.5).timeout
+		if Global.do_room_pause:
+			get_tree().paused = true
+			await get_tree().create_timer(0.5).timeout
 		for p in get_tree().get_nodes_in_group("projectile"):
 			if is_instance_valid(p):
 				p.queue_free()

@@ -7,6 +7,7 @@ var is_map_ready = false
 var money := 0
 var death_respawn_pos = Vector2(100,100)
 var spike_respawn_pos = Vector2(100,100)
+var do_room_pause = true
 
 func get_unique(group_name : String):
 	return get_tree().get_nodes_in_group(group_name).pop_back()

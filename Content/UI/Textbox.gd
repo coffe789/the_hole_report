@@ -51,7 +51,7 @@ func append_new_letter():
 			return AppendStatus.NORMAL
 	return AppendStatus.DONE
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if d_index > dialogue.size() - 1:
 			await get_tree().physics_frame

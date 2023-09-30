@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bq2rublwk60s4"]
+[gd_scene load_steps=17 format=3 uid="uid://bq2rublwk60s4"]
 
 [ext_resource type="Texture2D" uid="uid://s5btavi7ibmb" path="res://Art/bg0.png" id="1_2yt03"]
 [ext_resource type="TileSet" uid="uid://d3fja5bmjb0no" path="res://Content/Map/tile_map.tres" id="1_rgccw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bjaxc8kburou1" path="res://Art/picnic.png" id="7_2nqx0"]
 [ext_resource type="Texture2D" uid="uid://5njq07xfudk2" path="res://Art/croco_jr.png" id="10_77050"]
 [ext_resource type="PackedScene" uid="uid://cgeh63jy4p8v0" path="res://Content/Trigger/ChangeRespawnTrigger.tscn" id="10_bm35v"]
+[ext_resource type="PackedScene" uid="uid://dpcy01pkad02j" path="res://Content/LevelElement/entrance.tscn" id="11_qohis"]
 [ext_resource type="PackedScene" uid="uid://dbbruyu6qrvj1" path="res://Content/NPC/npc.tscn" id="12_5073p"]
 [ext_resource type="PackedScene" uid="uid://djuy8mo8nwe4i" path="res://Content/Map/room.tscn" id="12_ngnwq"]
 [ext_resource type="PackedScene" uid="uid://cfy2ts7675rf5" path="res://Content/Util/truffy_generator.tscn" id="13_1cxem"]
@@ -65,6 +66,21 @@ position = Vector2(94, 48)
 
 [node name="CollisionShape2D" parent="THE HOLE/ChangeRespawnTrigger2" index="0"]
 position = Vector2(1, -12)
+
+[node name="Entrance" parent="THE HOLE" instance=ExtResource("11_qohis")]
+position = Vector2(31, 24)
+
+[node name="To" parent="THE HOLE/Entrance" index="0"]
+position = Vector2(-210, 24)
+
+[node name="Interactable" parent="THE HOLE/Entrance" index="1"]
+position = Vector2(0, -1)
+
+[node name="Entrance2" parent="THE HOLE" instance=ExtResource("11_qohis")]
+position = Vector2(-179, 46)
+
+[node name="To" parent="THE HOLE/Entrance2" index="0"]
+position = Vector2(210, -22)
 
 [node name="THE_RIGHT" parent="." instance=ExtResource("12_ngnwq")]
 position = Vector2(336, 64)
@@ -122,6 +138,10 @@ dialogue = Array[String](["..sorry"])
 [editable path="THE HOLE"]
 [editable path="THE HOLE/ChangeRespawnTrigger"]
 [editable path="THE HOLE/ChangeRespawnTrigger2"]
+[editable path="THE HOLE/Entrance"]
+[editable path="THE HOLE/Entrance/Interactable"]
+[editable path="THE HOLE/Entrance2"]
+[editable path="THE HOLE/Entrance2/Interactable"]
 [editable path="THE_RIGHT"]
 [editable path="NUM_THREE_BAYBEE"]
 [editable path="Croco"]

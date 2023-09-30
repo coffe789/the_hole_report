@@ -108,7 +108,7 @@ func lerp_from_position(lerp_from, lerp_to):
 var font = preload("res://Content/Resource/Mystery Font.ttf")
 func _draw():
 	if Engine.is_editor_hint():
-		draw_string(font, Vector2.ZERO - Vector2(get_child(0).shape.extents.x,0), name, 0, -1, 8)
+		draw_string(font, Vector2.ZERO - Vector2(get_child(0).shape.extents.x,0), name, HORIZONTAL_ALIGNMENT_LEFT, -1, 8)
 
 
 func on_enter():

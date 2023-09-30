@@ -64,6 +64,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _on_collect_range_body_entered(body):
+func _on_collect_range_body_entered(_body):
 	Global.add_money(value)
 	queue_free()
