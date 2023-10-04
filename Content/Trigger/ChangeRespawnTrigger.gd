@@ -10,7 +10,7 @@ func _ready():
 func activate():
 	if type == "FOR_SPIKES" || type == "FOR_BOTH":
 		Global.spike_respawn_pos = $ColorRect.global_position
-		Global.spike_respawn_pos.y -= 5
+		Global.spike_respawn_pos.y -= 9
 	if type == "FOR_DEATH" || type == "FOR_BOTH":
 		Global.death_respawn_pos = $ColorRect.global_position
-		Global.death_respawn_pos.y -= 5
+		Global.death_respawn_pos.y -= 9
