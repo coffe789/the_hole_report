@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://5q6bkdcn6x3d"]
+
+[ext_resource type="Texture2D" uid="uid://x7godtxbvob4" path="res://Art/treasure.png" id="1_pj0sy"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="1_s458s"]
+[ext_resource type="Script" path="res://Content/LevelElement/treasure.gd" id="2_dbgbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6xhb"]
+size = Vector2(10, 5)
+
+[node name="Treasure" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_pj0sy")
+offset = Vector2(0, -4)
+hframes = 2
+vframes = 2
+script = ExtResource("2_dbgbt")
+
+[node name="RxHitbox" parent="." instance=ExtResource("1_s458s")]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_l6xhb")
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]

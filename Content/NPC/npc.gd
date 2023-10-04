@@ -1,6 +1,7 @@
 extends Sprite2D
 
-@export var dialogue_offset = Vector2(-16, -24)
+@export var dialogue_offset = Vector2(-16, -12)
+@export var player_dialogue_offset = Vector2(-16, -12)
 @onready var tb_scene = preload("res://Content/UI/textbox.tscn")
 var dialogues: Array[Dialogue]= []
 
@@ -32,7 +33,7 @@ func next_dialogue():
 	if dialogues[idx].is_player:
 		var p = Global.get_unique("player")
 		add_child.call_deferred(tb)
-		if p:tb.offset = p.global_position-global_position + dialogue_offset
+		if p:tb.offset = p.global_position-global_position + player_dialogue_offset
 	else:
 		add_child.call_deferred(tb)
 		tb.offset = dialogue_offset

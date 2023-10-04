@@ -5,6 +5,7 @@ func enter():
 
 func update(delta):
 	target.move(delta)
+	target.get_node("CoyoteTimer").start()
 	if Input.get_axis("ui_left", "ui_right") && target.get_node("Anim").current_animation != "walk":
 		target.get_node("Anim").custom_play("walk")
 	elif Input.get_axis("ui_left", "ui_right") == 0:

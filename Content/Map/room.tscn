@@ -11,7 +11,7 @@ collision_layer = 0
 script = ExtResource("1_3drtv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0.2)
 shape = SubResource("RectangleShape2D_x8phd")
 metadata/_edit_lock_ = true
 

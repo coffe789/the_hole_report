@@ -1,7 +1,7 @@
 extends TxHitbox
 
 @export var direction := Vector2.ZERO
-@export var speed := 200.0
+@export var speed := 100.0
 @export var lifetime := 10.0 # Seconds
 @export var damage := 1
 @export var from_player = false

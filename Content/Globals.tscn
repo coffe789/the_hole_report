@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ba1sts87opv47"]
 
-[ext_resource type="Script" path="res://Content/global.gd" id="1_mnwti"]
-[ext_resource type="PackedScene" uid="uid://d1348v1jnlpxd" path="res://Content/UI/top_menu.tscn" id="2_ypoph"]
+[ext_resource type="Script" path="res://Content/Globals.gd" id="1_vs6w2"]
+[ext_resource type="PackedScene" uid="uid://d1348v1jnlpxd" path="res://Content/UI/top_menu.tscn" id="2_2e750"]
 
 [sub_resource type="Animation" id="Animation_qiwqk"]
 length = 0.001
@@ -112,11 +112,11 @@ _data = {
 }
 
 [node name="Global" type="Node"]
-script = ExtResource("1_mnwti")
+script = ExtResource("1_vs6w2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TopMenu" parent="CanvasLayer" instance=ExtResource("2_ypoph")]
+[node name="TopMenu" parent="CanvasLayer" instance=ExtResource("2_2e750")]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 111.0

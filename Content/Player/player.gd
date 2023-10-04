@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-const MAX_SPEED = Vector2(65, 200)
 const MAX_HP = 3
 const INPUT_ACCEL = 30.0 * 60.0
-const JUMP_SPEED = -205.0
-const GRAVITY = 400
+const JUMP_SPEED = -150.0
+var max_speed = Vector2(65, 200)
+var gravity = 400
 
 var accel = Vector2.ZERO
 var is_attacking = false
 var hp = MAX_HP : set=set_health
+var has_jump_ended = false
 
 func _ready():
 	$RxHitbox.i_timer.timeout.connect(func reset_alpha(): modulate.a = 1)
@@ -17,15 +18,15 @@ func _ready():
 func move(delta):
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if !is_on_floor(): dir *= pow(modulate.a, 2) # Less control when taking damage
-	accel = Vector2(dir * INPUT_ACCEL, GRAVITY)
+	accel = Vector2(dir * INPUT_ACCEL, gravity)
 	velocity += accel * delta
 	if is_on_floor():
-		velocity *= 0.7
+		velocity.x *= 0.7
 	else:
 		velocity.x *= 0.9
 		
-	velocity.x = clampf(velocity.x, -MAX_SPEED.x, MAX_SPEED.x)
-	velocity.y = clampf(velocity.y, -MAX_SPEED.y, MAX_SPEED.y)
+	velocity.x = clampf(velocity.x, -max_speed.x, max_speed.x)
+	velocity.y = clampf(velocity.y, -INF, max_speed.y)
 	
 	move_and_slide()
 
@@ -61,7 +62,7 @@ func set_health(new_amount):
 		
 		velocity = Vector2(-sign($Sprite2D.scale.x) * 300, -80)
 		Global.do_freeze_frames(0.1)
-	hp = new_amount
+	hp = min(new_amount, MAX_HP)
 	return true
 
 func spike_respawn():
@@ -85,3 +86,13 @@ func die():
 
 func _on_spike_detect_body_entered(_body):
 	spike_respawn()
+
+
+func _on_water_finder_body_entered(_body):
+	gravity = 200
+	max_speed.y = 50
+
+
+func _on_water_finder_body_exited(_body):
+	gravity = 400
+	max_speed.y = 200

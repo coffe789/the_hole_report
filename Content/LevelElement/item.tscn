@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://c42sqbamr8tn5"]
+
+[ext_resource type="Texture2D" uid="uid://bwd3twr74jv60" path="res://Art/item.png" id="1_cf5nb"]
+[ext_resource type="PackedScene" uid="uid://btq51iwxqatrc" path="res://Content/Util/interactable.tscn" id="2_uhtcg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5foo"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4vg"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4e36"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th18v"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_busyl"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgy7a"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtq6a"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npdem"]
+atlas = ExtResource("1_cf5nb")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rma86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5foo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4e36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th18v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_busyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgy7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtq6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npdem")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Item" type="AnimatedSprite2D"]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_rma86")
+autoplay = "default"
+frame_progress = 0.958395
+
+[node name="Interactable" parent="." instance=ExtResource("2_uhtcg")]
+position = Vector2(0, 3)
+
+[editable path="Interactable"]

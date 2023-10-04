@@ -2,7 +2,7 @@ extends Node2D
 signal interact
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and body.visible:
 		$dir.visible = true
 
 func _on_body_exited(body):

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 33.0
+var speed = 33.0
 const JUMP_VELOCITY = -400.0
 @export var facing = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -15,7 +15,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if facing:
-		velocity.x = facing * SPEED
+		velocity.x = facing * speed
 	move_and_slide()
 
 
@@ -26,11 +26,12 @@ func _on_walk_dectector_barrier_detected(_type, direction):
 func _on_rx_hitbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("player_attack"):
 		hp -= amount
+		speed += 10
 		if hp == 0:
 			queue_free()
 		else:
 			var kb_dir = sign(global_position.x - damage_source.get_parent().global_position.x)
-			velocity = Vector2(kb_dir*100, -50)
+			velocity = Vector2(kb_dir*100, -30)
 			facing = 0
 			$StunTimer.start()
 			$RxHitbox.do_iframes()

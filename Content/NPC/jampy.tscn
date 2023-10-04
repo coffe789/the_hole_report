@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://yjkfiptagk27"]
+
+[ext_resource type="Script" path="res://Content/NPC/jampy.gd" id="1_40txd"]
+[ext_resource type="Texture2D" uid="uid://lgtt2jvw7lw5" path="res://Art/jampy.png" id="1_xu34u"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="3_xaqvt"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="4_25ao4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtpay"]
+size = Vector2(8, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oebxj"]
+size = Vector2(10, 2)
+
+[node name="Jampy" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 8
+script = ExtResource("1_40txd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_mtpay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_xu34u")
+hframes = 2
+
+[node name="Hat" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hat"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_oebxj")
+one_way_collision = true
+
+[node name="RxHitbox" parent="." instance=ExtResource("3_xaqvt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_mtpay")
+
+[node name="TxHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("4_25ao4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_mtpay")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="PrejumpTimer" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]

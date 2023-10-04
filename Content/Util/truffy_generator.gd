@@ -3,7 +3,7 @@ extends Node2D
 var value : int = 17
 
 func _ready() -> void:
-	generate_truffies()
+	generate_truffies.call_deferred()
 
 @onready var t = preload("./truffy.tscn")
 func generate_truffies(amount : int = value) -> void:

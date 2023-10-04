@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://bosn70dncjolq"]
+
+[ext_resource type="Script" path="res://Content/NPC/spider/spider.gd" id="1_fhgt1"]
+[ext_resource type="Texture2D" uid="uid://m2rysnf1ut01" path="res://Art/spider.png" id="1_pw54u"]
+[ext_resource type="PackedScene" uid="uid://c02edr0qq6qdq" path="res://Content/Util/WalkDetect/WalkDectector.tscn" id="2_2n770"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="2_wfp5u"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="3_jtogx"]
+[ext_resource type="Script" path="res://Content/Util/Statemachine/StateMachine.gd" id="4_k7v4x"]
+[ext_resource type="Script" path="res://Content/NPC/spider/transitions.gd" id="7_1h8cq"]
+[ext_resource type="Script" path="res://Content/NPC/spider/Wander.gd" id="7_ciwpu"]
+[ext_resource type="Script" path="res://Content/NPC/spider/Dangle.gd" id="8_dph4m"]
+[ext_resource type="Script" path="res://Content/NPC/spider/Retreat.gd" id="9_qevff"]
+[ext_resource type="Script" path="res://Content/NPC/spider/PissedOff.gd" id="10_4bq6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_152q6"]
+size = Vector2(8.5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1xkw"]
+size = Vector2(13.5, 93)
+
+[node name="Spider" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_fhgt1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pw54u")
+
+[node name="Web" type="ColorRect" parent="."]
+visible = false
+offset_left = -1.0
+offset_top = -134.0
+offset_bottom = -7.0
+color = Color(1, 1, 1, 0.607843)
+
+[node name="WalkDectector" parent="." instance=ExtResource("2_2n770")]
+check_vertical = false
+
+[node name="VLeft" parent="WalkDectector" index="0"]
+visible = false
+enabled = false
+
+[node name="VRight" parent="WalkDectector" index="1"]
+visible = false
+enabled = false
+
+[node name="HLeft" parent="WalkDectector" index="2"]
+position = Vector2(-4, 0)
+
+[node name="HRight" parent="WalkDectector" index="3"]
+position = Vector2(4, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_152q6")
+
+[node name="VRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 13)
+
+[node name="RxHitbox" parent="." instance=ExtResource("2_wfp5u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+shape = SubResource("RectangleShape2D_152q6")
+
+[node name="TxHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("3_jtogx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
+shape = SubResource("RectangleShape2D_152q6")
+
+[node name="SM" type="Node" parent="."]
+script = ExtResource("4_k7v4x")
+
+[node name="States" type="Node" parent="SM"]
+
+[node name="Wander" type="Node" parent="SM/States"]
+script = ExtResource("7_ciwpu")
+
+[node name="Dangle" type="Node" parent="SM/States"]
+script = ExtResource("8_dph4m")
+
+[node name="Retreat" type="Node" parent="SM/States"]
+script = ExtResource("9_qevff")
+
+[node name="PissedOff" type="Node" parent="SM/States"]
+script = ExtResource("10_4bq6g")
+
+[node name="Transitions" type="Node" parent="SM"]
+script = ExtResource("7_1h8cq")
+
+[node name="PlayerSearch" type="Area2D" parent="."]
+position = Vector2(0, 47)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSearch"]
+shape = SubResource("RectangleShape2D_m1xkw")
+
+[connection signal="barrier_detected" from="WalkDectector" to="." method="_on_walk_dectector_barrier_detected"]
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
+[connection signal="body_entered" from="PlayerSearch" to="." method="_on_player_search_body_entered"]
+
+[editable path="WalkDectector"]

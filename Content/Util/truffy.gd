@@ -4,6 +4,11 @@ class_name Truffy
 const denominations = [10, 5, 1]
 
 var value : int = 1 : set = set_value
+var is_attracted = false
+
+func _ready():
+	await get_tree().create_timer(0.15).timeout
+	is_attracted = true
 
 func set_value(v : int) -> void:
 	value = v
@@ -40,8 +45,7 @@ func _on_seek_range_entered(body: Node2D) -> void:
 			target = body
 
 func _physics_process(delta: float) -> void:
-	
-	if target:
+	if target and is_attracted:
 		set_collision_layer_value(1, false)
 		
 		var diff = target.global_position - global_position

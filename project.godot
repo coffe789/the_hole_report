@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Content/Global.tscn"
+Global="*res://Content/Globals.tscn"
 
 [debug]
 
@@ -70,6 +70,11 @@ attack={
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="interact"
 2d_physics/layer_6="spike"
+2d_physics/layer_7="water"
+
+[physics]
+
+2d/default_gravity=200.0
 
 [rendering]
 

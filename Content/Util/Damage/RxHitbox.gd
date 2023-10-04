@@ -6,8 +6,6 @@ signal damage_received(amount, damage_source)
 @export var i_seconds = .4
 var i_timer = Timer.new()
 
-@export var hit_disable_time = 0.25
-
 func _ready():
 	i_timer.one_shot = true
 	add_child(i_timer)

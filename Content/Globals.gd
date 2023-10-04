@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 signal room_changed(room)
@@ -19,6 +18,12 @@ func _input(event):
 			for room in get_tree().get_nodes_in_group("room"):
 				room.get_node("CollisionShape2D").position = Vector2.ZERO
 
+func get_player_dir(my_glob_pos: Vector2):
+	var p = get_unique("player")
+	if p:
+		return sign(p.global_position.x - my_glob_pos.x)
+	return 0
+
 #func get_my_room(me:Node):
 #	var p = me.get_parent()
 #	while (p != null):
@@ -38,6 +43,7 @@ func add_money(to_add):
 
 func update_room_name(room_name:String):
 	room_name = room_name.replace("_", " ")
+	room_name = room_name.to_upper()
 	$CanvasLayer/TopMenu/RoomText.text = "[right]" + room_name + "[/right]"
 
 func update_hearts(hp):

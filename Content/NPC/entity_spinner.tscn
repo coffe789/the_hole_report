@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdf3onwm5w14d"]
+
+[ext_resource type="Script" path="res://Content/LevelElement/EntitySpinner.gd" id="1_uvg1w"]
+
+[node name="EntitySpinner" type="Node2D"]
+script = ExtResource("1_uvg1w")
+
+[node name="ToSpin" type="Node2D" parent="."]

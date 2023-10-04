@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8vl1ad28bkle"]
+
+[ext_resource type="Script" path="res://Content/NPC/bloblin_s.gd" id="1_u41x5"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="2_sbo3v"]
+[ext_resource type="Texture2D" uid="uid://cnjin3hi77rm5" path="res://Art/bloblin_s-sheet.png" id="2_v7uo3"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="3_fotkf"]
+[ext_resource type="PackedScene" uid="uid://c02edr0qq6qdq" path="res://Content/Util/WalkDetect/WalkDectector.tscn" id="5_5jto1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akbm6"]
+atlas = ExtResource("2_v7uo3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdsgk"]
+atlas = ExtResource("2_v7uo3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k3bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akbm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdsgk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_naiko"]
+size = Vector2(6, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhkab"]
+size = Vector2(8, 10)
+
+[node name="BloblinSmall" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 8
+script = ExtResource("1_u41x5")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_6k3bu")
+autoplay = "default"
+frame_progress = 0.432241
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_naiko")
+
+[node name="RxHitbox" parent="." instance=ExtResource("2_sbo3v")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_vhkab")
+
+[node name="TxHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("3_fotkf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_naiko")
+
+[node name="WalkDectector" parent="." instance=ExtResource("5_5jto1")]
+
+[node name="VLeft" parent="WalkDectector" index="0"]
+position = Vector2(-5, 7)
+target_position = Vector2(0, 7)
+
+[node name="VRight" parent="WalkDectector" index="1"]
+position = Vector2(5, 7)
+target_position = Vector2(0, 7)
+
+[node name="HLeft" parent="WalkDectector" index="2"]
+position = Vector2(-4, 0)
+
+[node name="HRight" parent="WalkDectector" index="3"]
+position = Vector2(4, 0)
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
+[connection signal="barrier_detected" from="WalkDectector" to="." method="_on_walk_dectector_barrier_detected"]
+
+[editable path="WalkDectector"]

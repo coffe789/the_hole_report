@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://do5v0mnkfytki"]
+
+[ext_resource type="Script" path="res://Content/NPC/jump_bloblin.gd" id="1_aiv1p"]
+[ext_resource type="Texture2D" uid="uid://cnjin3hi77rm5" path="res://Art/bloblin_s-sheet.png" id="1_d27d1"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="3_c0d6r"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="4_kx0oh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6fn6"]
+size = Vector2(8, 9)
+
+[node name="JumpBloblin" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 8
+script = ExtResource("1_aiv1p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d27d1")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_y6fn6")
+
+[node name="RxHitbox" parent="." instance=ExtResource("3_c0d6r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_y6fn6")
+
+[node name="TxHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("4_kx0oh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_y6fn6")
+
+[node name="JumpTimer" type="Timer" parent="."]
+process_callback = 0
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

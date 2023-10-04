@@ -1,17 +1,17 @@
 extends State
 
-var has_ended_jump
-
 func enter():
-	has_ended_jump = false
+	target.has_jump_ended = false
 	target.velocity.y = target.JUMP_SPEED
 	target.get_node("Anim").custom_play("jump")
 	target.get_node("PrejumpTimer").stop()
+	target.get_node("CoyoteTimer").stop()
+#	print(target.velocity.y)
 
 func update(delta):
-	if !has_ended_jump && !Input.is_action_pressed("jump") && target.velocity.y < 0:
+	if !target.has_jump_ended && !Input.is_action_pressed("jump") && target.velocity.y < 0:
 		target.velocity.y /= 3
-		has_ended_jump = true
+		target.has_jump_ended = true
 	target.move(delta)
 
 func exit():

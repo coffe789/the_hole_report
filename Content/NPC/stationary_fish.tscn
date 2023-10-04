@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://deuhu4rgfk7l"]
+
+[ext_resource type="PackedScene" uid="uid://cbfejmfsoth27" path="res://Content/NPC/stationary_enemy.tscn" id="1_rdiki"]
+[ext_resource type="Texture2D" uid="uid://tsnrbr1e311p" path="res://Art/feesh_blue.png" id="2_3eir1"]
+
+[node name="StationaryFish" instance=ExtResource("1_rdiki")]
+hp = 1
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_3eir1")
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]

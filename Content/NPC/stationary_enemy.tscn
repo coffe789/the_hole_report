@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbfejmfsoth27"]
+
+[ext_resource type="Script" path="res://Content/NPC/stationary_enemy.gd" id="1_7yhgl"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="1_owofy"]
+[ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="2_vyusq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kurv5"]
+size = Vector2(8, 8)
+
+[node name="StationaryEnemy" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_7yhgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kurv5")
+
+[node name="RxHitbox" parent="." instance=ExtResource("1_owofy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+shape = SubResource("RectangleShape2D_kurv5")
+
+[node name="TxHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("2_vyusq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
+shape = SubResource("RectangleShape2D_kurv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmfy31r2h6e7v"]
+
+[ext_resource type="TileSet" uid="uid://d3fja5bmjb0no" path="res://Content/Map/tile_map.tres" id="1_8jirl"]
+[ext_resource type="Script" path="res://Content/LevelElement/SquareTileMover.gd" id="2_huhyw"]
+
+[node name="SquareTileMover" type="TileMap"]
+tile_set = ExtResource("1_8jirl")
+collision_animatable = true
+format = 2
+layer_0/tile_data = PackedInt32Array(65535, 65537, 2, -1, 65537, 0, -65536, 65537, 0, 0, 65537, 2, 1, 131073, 2, -65535, 131073, 0, -2, 1, 0, 65534, 1, 2)
+script = ExtResource("2_huhyw")

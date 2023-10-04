@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://blp55a5vpggaq"]
+
+[ext_resource type="TileSet" uid="uid://d3fja5bmjb0no" path="res://Content/Map/tile_map.tres" id="1_t0gjd"]
+[ext_resource type="Script" path="res://Content/LevelElement/breakable_tiles.gd" id="2_6uxvh"]
+
+[node name="BreakableTiles" type="TileMap" groups=["breakable_tile"]]
+tile_set = ExtResource("1_t0gjd")
+collision_animatable = true
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 131073, 2, 65535, 1, 2, -1, 1, 0, -65536, 131073, 0)
+script = ExtResource("2_6uxvh")
