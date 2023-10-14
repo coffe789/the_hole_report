@@ -10,6 +10,8 @@
 position = Vector2(16, 0)
 
 [node name="StationaryFish" parent="ToSpin" index="0" instance=ExtResource("2_34tgw")]
+collision_layer = 0
+collision_mask = 0
 hp = 2
 
 [node name="CollisionShape2D" parent="ToSpin/StationaryFish" index="0"]

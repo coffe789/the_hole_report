@@ -30,15 +30,16 @@ func enter():
 		call_deferred("add_child", resetables.instantiate())
 
 func exit():
-	$Resetables.queue_free()
+	if resetables:
+		$Resetables.queue_free()
 
 func _on_area_entered(area):
-	if area.is_in_group("player_room_finder"):
+	if area.is_in_group("player_room_finder") && Global.get_unique("camera").current_room != self:
 		enter()
 
 func _on_area_exited(area):
 	if resetables and area.is_in_group("player_room_finder"):
-		exit()
+		pass # exit()
 
 const snap_fatness = 6.0/2 + 1
 const snap_up_height = 10.0 / 2 + 1

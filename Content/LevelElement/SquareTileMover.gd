@@ -22,7 +22,7 @@ var speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !Engine.is_editor_hint() && Global.is_map_ready:
+	if !Engine.is_editor_hint():
 		start_pos = position
 		await get_tree().physics_frame
 		position = start_pos # I hate godot
@@ -48,7 +48,7 @@ func _process(delta):
 		queue_redraw()
 
 func _physics_process(delta):
-	if !Engine.is_editor_hint():
+	if !Engine.is_editor_hint() && points:
 		if position == start_pos + to_point - offset:
 			corner = ((corner + dir) + 4) % 4
 			to_point = points[corner]

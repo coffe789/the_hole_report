@@ -31,5 +31,6 @@ func on_room_changed(room):
 			if is_instance_valid(p):
 				p.queue_free()
 		get_tree().paused = false
+		current_room.exit()
 	
 	current_room = room

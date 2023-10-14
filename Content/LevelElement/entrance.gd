@@ -5,7 +5,7 @@ extends Node2D
 func _on_interactable_interact():
 	var p: CharacterBody2D = Global.get_unique("player")
 	var cam: Camera2D = Global.get_unique("camera")
-	if p && cam:
+	if p && cam and p.is_on_floor() and target:
 		Global.do_room_pause = false
 		p.global_position = target.global_position
 		p.global_position.y -= 6
