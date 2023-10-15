@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-var speed = 33.0
+@export var speed = 33.0
 const JUMP_VELOCITY = -400.0
 @export var facing = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hp = 2
+@export var hp = 2
 
 func _physics_process(delta):
 	if facing:

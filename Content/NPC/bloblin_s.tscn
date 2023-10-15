@@ -38,7 +38,6 @@ size = Vector2(8, 10)
 z_index = -1
 collision_layer = 8
 script = ExtResource("1_u41x5")
-facing = null
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)

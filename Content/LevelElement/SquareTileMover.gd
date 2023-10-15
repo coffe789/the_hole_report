@@ -11,7 +11,7 @@ enum d {FORWARD = 1, BACKWARD = -1}
 @export var square_size = Vector2(64, 64)
 @export var corner := rot.T_LEFT
 @export var dir := d.FORWARD
-@export var max_speed = 50
+@export var max_speed = 35
 @export var accel = 10
 
 var start_pos : Vector2

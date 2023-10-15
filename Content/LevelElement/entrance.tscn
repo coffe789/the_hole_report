@@ -16,6 +16,7 @@ script = ExtResource("1_gndq7")
 shape = SubResource("RectangleShape2D_o5nxi")
 
 [node name="dir" parent="Interactable" index="1"]
+z_index = 5
 position = Vector2(0, -19)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

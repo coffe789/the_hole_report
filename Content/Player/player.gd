@@ -44,7 +44,7 @@ func _physics_process(delta):
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir && !is_attacking:
 		$Sprite2D.scale.x = sign(dir)
-		$TxHitbox.position.x = 10 * sign(dir)
+		$TxHitbox.position.x = 9 * sign(dir)
 
 func _on_rx_hitbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
@@ -96,3 +96,8 @@ func _on_water_finder_body_entered(_body):
 func _on_water_finder_body_exited(_body):
 	gravity = 400
 	max_speed.y = 200
+
+
+func _on_tx_hitbox_target_found(target):
+	if not target.is_in_group("player_rxbox"):
+		velocity.x = -sign($Sprite2D.scale.x) * 150

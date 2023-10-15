@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -100.0
+@export var JUMP_VELOCITY = -100.0
 
 var jump_count = 0
-var hp = 2
+@export var hp = 2
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

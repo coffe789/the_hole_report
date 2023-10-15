@@ -12,7 +12,7 @@ func generate_truffies(amount : int = value) -> void:
 	while remaining_value_to_spawn > 0:
 		
 		var truffy = t.instantiate()
-		add_child(truffy)
+		get_tree().root.add_child(truffy)
 		
 		for d in Truffy.denominations:
 			if d <= remaining_value_to_spawn:
@@ -23,11 +23,12 @@ func generate_truffies(amount : int = value) -> void:
 		truffy.global_position = global_position
 		
 		truffy.randomise_velocity()
-
-
-func _on_timer_timeout() -> void:
-	generate_truffies(value)
 	queue_free()
+
+
+#func _on_timer_timeout() -> void:
+#	generate_truffies(value)
+#	queue_free()
 
 #func _on_child_exiting_tree(x: Node) -> void:
 #	if get_children().size() == 0:
