@@ -5,7 +5,7 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
 
 [node name="PauseMenu" type="Node2D" parent="CanvasLayer"]
 process_mode = 3

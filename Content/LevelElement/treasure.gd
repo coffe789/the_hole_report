@@ -4,7 +4,10 @@ extends Sprite2D
 @onready var money = preload("res://Content/Util/truffy_generator.tscn")
 @export var hp = 2
 
-func _on_rx_hitbox_damage_received(_amount, _damage_source):
+func _on_rx_hitbox_damage_received(_amount, damage_source):
+	if !damage_source.is_in_group("player_attack"):
+		return
+		
 	Global.do_freeze_frames()
 	var money_instance = money.instantiate()
 	hp -= 1
@@ -18,3 +21,4 @@ func _on_rx_hitbox_damage_received(_amount, _damage_source):
 		$RxHitbox.do_iframes()
 	
 	add_child(money_instance)
+	money_instance.position.x = 8
