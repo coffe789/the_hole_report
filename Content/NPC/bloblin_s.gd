@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var hp = 2
+@export var value = 1
 
 func _physics_process(delta):
 	if facing:
@@ -28,6 +29,7 @@ func _on_rx_hitbox_damage_received(amount, damage_source):
 		hp -= amount
 		speed += 10
 		if hp == 0:
+			Global.do_death_animation(global_position, 0.9, value)
 			queue_free()
 		else:
 			var kb_dir = sign(global_position.x - damage_source.get_parent().global_position.x)

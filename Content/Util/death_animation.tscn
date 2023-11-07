@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb55cv03v6ea2"]
+
+[sub_resource type="GDScript" id="GDScript_g63wl"]
+script/source = "extends Node2D
+
+@export var price = 0
+@export var money_chance = 0.8
+
+@onready var truffy_scene = preload(\"res://Content/Util/truffy_generator.tscn\")
+@onready var heart_scene = preload(\"res://Content/LevelElement/heart.tscn\")
+
+func activate():
+	var is_money = randf_range(0,1) < money_chance
+	var reward
+	if is_money:
+		reward = truffy_scene.instantiate()
+	else:
+		reward = heart_scene.instantiate()
+	
+	get_tree().root.add_child(reward)
+"
+
+[node name="DeathAnimation" type="Node2D"]
+script = SubResource("GDScript_g63wl")

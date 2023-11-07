@@ -8,7 +8,7 @@ var gravity = 400
 
 var accel = Vector2.ZERO
 var is_attacking = false
-var hp = MAX_HP : set=set_health
+@export var hp = MAX_HP : set=set_health
 var has_jump_ended = false
 
 func _ready():
@@ -29,7 +29,11 @@ func move(delta):
 	velocity.y = clampf(velocity.y, -INF, max_speed.y)
 	
 	move_and_slide()
-
+	
+	if Input.is_action_just_pressed("ui_down") and is_on_floor()\
+	 and !$FallthruDetectL.is_colliding() and !$FallthruDetectR.is_colliding():
+		position.y += 3
+	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("jump"):
 		$PrejumpTimer.start()
@@ -62,7 +66,7 @@ func set_health(new_amount):
 		
 		velocity = Vector2(-sign($Sprite2D.scale.x) * 300, -80)
 		Global.do_freeze_frames(0.1)
-	hp = min(new_amount, MAX_HP)
+	#hp = min(new_amount, MAX_HP)
 	return true
 
 func spike_respawn():

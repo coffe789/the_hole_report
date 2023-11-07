@@ -37,6 +37,7 @@ func _on_rx_hitbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("player_attack"):
 		hp -= amount
 		if hp == 0:
+			Global.do_death_animation(global_position, 0.9, 4)
 			queue_free()
 		else:
 			var kb_dir = sign(global_position.x - damage_source.get_parent().global_position.x)

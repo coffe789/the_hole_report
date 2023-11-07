@@ -8,9 +8,11 @@ var death_respawn_pos = Vector2(100,100)
 var spike_respawn_pos = Vector2(100,100)
 var do_room_pause = true
 
+func _ready():
+	randomize()
+
 func get_unique(group_name : String):
 	return get_tree().get_nodes_in_group(group_name).pop_back()
-
 
 func _input(event):
 	if Engine.is_editor_hint():
@@ -56,3 +58,17 @@ func death_wipe():
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play_backwards("death_wipe")
 	return $AnimationPlayer.animation_finished
+
+@onready var truffy_scene = preload("res://Content/Util/truffy_generator.tscn")
+@onready var heart_scene = preload("res://Content/LevelElement/heart.tscn")
+func do_death_animation(position, money_chance, value):
+	var is_money = randf_range(0,1) < money_chance
+	var reward
+	if is_money:
+		reward = truffy_scene.instantiate()
+		reward.value = 1
+	else:
+		reward = heart_scene.instantiate()
+	
+	get_tree().root.add_child(reward)
+	reward.global_position = position

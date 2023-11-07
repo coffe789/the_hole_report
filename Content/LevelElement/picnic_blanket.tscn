@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c28f2vo66hxlt"]
+
+[ext_resource type="Texture2D" uid="uid://dtp741p3vyja3" path="res://Art/fg_blanket_beg.png" id="1_l7fki"]
+[ext_resource type="Script" path="res://Content/LevelElement/PicnicBlanket.gd" id="2_qmbrk"]
+[ext_resource type="PackedScene" uid="uid://btq51iwxqatrc" path="res://Content/Util/interactable.tscn" id="3_m16k1"]
+
+[node name="PicnicBlanket" type="Sprite2D"]
+z_index = 5
+texture = ExtResource("1_l7fki")
+script = ExtResource("2_qmbrk")
+
+[node name="Interactable" parent="." instance=ExtResource("3_m16k1")]
+position = Vector2(-4, -11)
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+
+[editable path="Interactable"]

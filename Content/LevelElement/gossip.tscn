@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7fp273ck1wks"]
+
+[ext_resource type="Texture2D" uid="uid://cyrdbhe45aqv2" path="res://Art/scroll.png" id="1_6hhs0"]
+[ext_resource type="Script" path="res://Content/LevelElement/gossip.gd" id="2_rm5xp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wknwj"]
+size = Vector2(11, 10)
+
+[node name="Gossip" type="Sprite2D"]
+texture = ExtResource("1_6hhs0")
+script = ExtResource("2_rm5xp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_wknwj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
