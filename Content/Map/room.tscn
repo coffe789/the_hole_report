@@ -7,7 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8phd"]
 size = Vector2(224, 126)
 
-[node name="Room" type="Area2D"]
+[node name="Room" type="Area2D" groups=["room"]]
+modulate = Color(0.208322, 0.581042, 0.185858, 1)
 collision_layer = 0
 script = ExtResource("1_3drtv")
 

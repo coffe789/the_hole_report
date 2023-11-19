@@ -32,6 +32,10 @@ window/size/window_width_override=896
 window/size/window_height_override=504
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/coffeplugin/plugin.cfg")
+
 [gui]
 
 theme/custom_font="res://Content/Resource/Mystery Font.ttf"

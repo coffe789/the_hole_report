@@ -22,7 +22,8 @@ func _ready():
 		$Resetables.queue_free()
 		modulate = Color(1,1,1,1)
 	else:
-		modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
+		modulate = Color(1,1,1,1)
+		# modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
 
 func enter():
 	Global.room_changed.emit(self)

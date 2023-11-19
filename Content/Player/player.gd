@@ -3,7 +3,7 @@ extends CharacterBody2D
 const MAX_HP = 3
 const INPUT_ACCEL = 30.0 * 60.0
 const JUMP_SPEED = -150.0
-var max_speed = Vector2(65, 200)
+var max_speed = Vector2(75, 200)
 var gravity = 400
 
 var accel = Vector2.ZERO
