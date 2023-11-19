@@ -14,7 +14,7 @@ func set_camera_limits(room_shape):
 	var room_size = room_shape.shape.extents * 2
 	limit_left = room_shape.global_position.x - room_size.x / 2
 	limit_top = room_shape.global_position.y - room_size.y / 2
-	limit_right = limit_left + room_size.x
+	limit_right = limit_left + room_size.x - 1 # Minus 1 fixes weirdness...
 	limit_bottom = limit_top + room_size.y
 
 func on_room_changed(room):
@@ -26,7 +26,7 @@ func on_room_changed(room):
 		
 		if Global.do_room_pause:
 			get_tree().paused = true
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.73).timeout
 		for p in get_tree().get_nodes_in_group("projectile"):
 			if is_instance_valid(p):
 				p.queue_free()

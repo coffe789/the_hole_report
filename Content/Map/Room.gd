@@ -1,3 +1,4 @@
+@tool
 extends Area2D
 
 const MIN_ROOM_WIDTH = 224
@@ -16,10 +17,12 @@ func _ready():
 #		push_error("Room [" + name + "]'s width is smaller than the minimum")
 #	if ($CollisionShape2D.shape.size.y < MIN_ROOM_HEIGHT):
 #		push_error("Room [" + name + "]'s height is smaller than the minimum")
-	
-	if $Resetables.get_child_count():
+	if !Engine.is_editor_hint():
 		resetables = $Resetables.create_scene()
 		$Resetables.queue_free()
+		modulate = Color(1,1,1,1)
+	else:
+		modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
 
 func enter():
 	Global.room_changed.emit(self)

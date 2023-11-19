@@ -66,7 +66,7 @@ func set_health(new_amount):
 		
 		velocity = Vector2(-sign($Sprite2D.scale.x) * 300, -80)
 		Global.do_freeze_frames(0.1)
-	#hp = min(new_amount, MAX_HP)
+	hp = min(new_amount, MAX_HP)
 	return true
 
 func spike_respawn():
