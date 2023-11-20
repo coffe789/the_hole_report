@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bq2rublwk60s4"]
+[gd_scene load_steps=86 format=3 uid="uid://bq2rublwk60s4"]
 
 [ext_resource type="Texture2D" uid="uid://s5btavi7ibmb" path="res://Art/bg0.png" id="1_2yt03"]
 [ext_resource type="Script" path="res://Content/Map/world.gd" id="1_uklxy"]
@@ -169,6 +169,30 @@ size = Vector2(896, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gihfi"]
 resource_local_to_scene = true
 size = Vector2(336, 189)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdyr4"]
+resource_local_to_scene = true
+size = Vector2(224, 252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghsux"]
+resource_local_to_scene = true
+size = Vector2(224, 252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdjlv"]
+resource_local_to_scene = true
+size = Vector2(448, 252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ns3bd"]
+resource_local_to_scene = true
+size = Vector2(672, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ib5"]
+resource_local_to_scene = true
+size = Vector2(224, 378)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an2i2"]
+resource_local_to_scene = true
+size = Vector2(456, 126)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_uklxy")
@@ -709,12 +733,12 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="StationaryFish6" parent="Soggy Socks/Resetables" index="10" instance=ExtResource("18_fb2aq")]
-position = Vector2(28, 49)
+position = Vector2(28, 41)
 collision_layer = 0
 collision_mask = 0
 
 [node name="StationaryFish7" parent="Soggy Socks/Resetables" index="11" instance=ExtResource("18_fb2aq")]
-position = Vector2(44, 49)
+position = Vector2(44, 41)
 collision_layer = 0
 collision_mask = 0
 
@@ -1358,7 +1382,7 @@ position = Vector2(896, 256)
 shape = SubResource("RectangleShape2D_gb37c")
 
 [node name="Room2" parent="." instance=ExtResource("12_ngnwq")]
-position = Vector2(-576, 248)
+position = Vector2(-568, 248)
 
 [node name="CollisionShape2D" parent="Room2" index="0"]
 shape = SubResource("RectangleShape2D_ksnie")
@@ -1392,6 +1416,57 @@ position = Vector2(2976, 176)
 
 [node name="CollisionShape2D" parent="Room8" index="0"]
 shape = SubResource("RectangleShape2D_gihfi")
+
+[node name="Room9" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(-1008, 112)
+
+[node name="Room10" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(-1008, -80)
+
+[node name="CollisionShape2D" parent="Room10" index="0"]
+shape = SubResource("RectangleShape2D_xdyr4")
+
+[node name="Room11" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(-1016, 304)
+
+[node name="CollisionShape2D" parent="Room11" index="0"]
+shape = SubResource("RectangleShape2D_ghsux")
+
+[node name="Room12" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(-680, 480)
+
+[node name="CollisionShape2D" parent="Room12" index="0"]
+shape = SubResource("RectangleShape2D_bdjlv")
+
+[node name="Room13" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(-344, 416)
+
+[node name="Room14" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(-344, 544)
+
+[node name="Room15" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(104, 544)
+
+[node name="CollisionShape2D" parent="Room15" index="0"]
+shape = SubResource("RectangleShape2D_ns3bd")
+
+[node name="Room16" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(1232, 448)
+
+[node name="CollisionShape2D" parent="Room16" index="0"]
+shape = SubResource("RectangleShape2D_l2ib5")
+
+[node name="Room17" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(1008, 504)
+
+[node name="Room18" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(668, 536)
+
+[node name="CollisionShape2D" parent="Room18" index="0"]
+shape = SubResource("RectangleShape2D_an2i2")
+
+[node name="Room19" parent="." instance=ExtResource("12_ngnwq")]
+position = Vector2(120, 416)
 
 [editable path="Time to explore"]
 [editable path="Time to explore/Resetables/NPC"]
@@ -1465,3 +1540,9 @@ shape = SubResource("RectangleShape2D_gihfi")
 [editable path="Room6"]
 [editable path="Room7"]
 [editable path="Room8"]
+[editable path="Room10"]
+[editable path="Room11"]
+[editable path="Room12"]
+[editable path="Room15"]
+[editable path="Room16"]
+[editable path="Room18"]
