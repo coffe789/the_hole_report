@@ -22,6 +22,7 @@ Global="*res://Content/Globals.tscn"
 
 [debug]
 
+gdscript/warnings/int_as_enum_without_cast=0
 shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 [display]

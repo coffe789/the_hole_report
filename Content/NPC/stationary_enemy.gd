@@ -6,7 +6,7 @@ extends CharacterBody2D
 func _ready():
 	global_rotation = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var dir = Global.get_player_dir(global_position)
 	if dir:
 		$Sprite2D.scale.x = dir

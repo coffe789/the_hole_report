@@ -1,6 +1,6 @@
 @tool
 extends Trigger
-@export_enum("FOR_SPIKES", "FOR_DEATH", "FOR_BOTH") var type = "FOR_DEATH"
+@export_enum("FOR_SPIKES", "FOR_DEATH", "FOR_BOTH") var type = "FOR_SPIKES"
 
 func _ready():
 	super()

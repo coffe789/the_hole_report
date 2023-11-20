@@ -9,7 +9,7 @@ enum rot {
 enum d {FORWARD = 1, BACKWARD = -1}
 
 @export var square_size = Vector2(64, 64)
-@export var corner := rot.T_LEFT
+@export var corner = rot.T_LEFT
 @export var dir := d.FORWARD
 @export var max_speed = 35
 @export var accel = 10
@@ -43,7 +43,7 @@ func _draw():
 		if corner == 2 or corner == 3: rect.y *= -1
 		draw_rect(Rect2(Vector2.ZERO, rect), Color(1,1,1, 0.9), false, 2)
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
 

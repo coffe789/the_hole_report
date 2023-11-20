@@ -26,7 +26,7 @@ func on_room_changed(room):
 		
 		if Global.do_room_pause:
 			get_tree().paused = true
-			await get_tree().create_timer(0.73).timeout
+			await get_tree().create_timer(0.70).timeout
 		for p in get_tree().get_nodes_in_group("projectile"):
 			if is_instance_valid(p):
 				p.queue_free()

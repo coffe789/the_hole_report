@@ -50,8 +50,11 @@ func update_room_name(room_name:String):
 
 func update_hearts(hp):
 	$CanvasLayer/TopMenu/H1.visible = hp >= 1
-	$CanvasLayer/TopMenu/H2.visible = hp >= 2
-	$CanvasLayer/TopMenu/H3.visible = hp >= 3
+	$CanvasLayer/TopMenu/H1.frame = !(hp >= 2)
+	$CanvasLayer/TopMenu/H2.visible = hp >= 3
+	$CanvasLayer/TopMenu/H2.frame = !(hp >= 4)
+	$CanvasLayer/TopMenu/H3.visible = hp >= 5
+	$CanvasLayer/TopMenu/H3.frame = !(hp >= 6)
 
 func death_wipe():
 	$AnimationPlayer.play("death_wipe")
@@ -61,7 +64,7 @@ func death_wipe():
 
 @onready var truffy_scene = preload("res://Content/Util/truffy_generator.tscn")
 @onready var heart_scene = preload("res://Content/LevelElement/heart.tscn")
-func do_death_animation(position, money_chance, value):
+func do_death_animation(_position, money_chance, value):
 	var is_money = randf_range(0,1) < money_chance
 	var reward
 	if is_money:
@@ -71,4 +74,4 @@ func do_death_animation(position, money_chance, value):
 		reward = heart_scene.instantiate()
 	
 	get_tree().root.add_child(reward)
-	reward.global_position = position
+	reward.global_position = _position

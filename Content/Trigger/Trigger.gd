@@ -39,8 +39,8 @@ var bottom_bound
 var is_player_inside = false
 
 func _ready():
+	add_to_group("trigger")
 	if !Engine.is_editor_hint():
-		self.add_to_group("trigger")
 		if target_type == Target_types.BODY:
 			body_entered.connect(_on_target_entered)
 			body_exited.connect(_on_target_exited)

@@ -25,14 +25,17 @@ flip_h = true
 [node name="H1" type="Sprite2D" parent="."]
 position = Vector2(100, 6)
 texture = ExtResource("1_sbbei")
+vframes = 2
 
 [node name="H2" type="Sprite2D" parent="."]
 position = Vector2(112, 6)
 texture = ExtResource("1_sbbei")
+vframes = 2
 
 [node name="H3" type="Sprite2D" parent="."]
 position = Vector2(124, 6)
 texture = ExtResource("1_sbbei")
+vframes = 2
 
 [node name="COIN" type="Sprite2D" parent="."]
 position = Vector2(6, 5)
