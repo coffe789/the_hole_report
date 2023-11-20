@@ -43,11 +43,11 @@ func _input(event):
 	if !(event is InputEventMouseMotion or event is InputEventJoypadMotion) and event.pressed and selected_room and Engine.is_editor_hint():
 		match event.as_text():
 			"Alt+1":
-				select_node(selected_room.get_node("Resetables/TileMap"))
-			"Alt+2":
-				select_node(selected_room.get_node("Resetables"))
-			"Alt+3":
 				select_node(selected_room)
+			"Alt+2":
+				select_node(selected_room.get_node("Resetables/TileMap"))
+			"Alt+3":
+				select_node(selected_room.get_node("Resetables"))
 			"Alt+4":
 				var ts = selected_room.get_node("Resetables").get_children().filter(func_is_in_group("trigger"))
 				if !ts.is_empty():
@@ -56,7 +56,7 @@ func _input(event):
 					select_node(ts[trigger_idx])
 			"Alt+R":
 				select_node(selected_room.get_parent())
-			"Ctrl+P": # Move player to cursor
+			"Alt+E": # Move player to cursor
 				var p = get_tree().get_nodes_in_group("player").pop_back()
 				if p:
 					var mousepos = p.get_viewport().get_mouse_position()
