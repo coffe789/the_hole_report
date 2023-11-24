@@ -12,13 +12,6 @@ func _ready():
 	if Engine.is_editor_hint():
 		set_process_input(true);
 
-func _process(delta):
-	if Engine.is_editor_hint():
-		change_selected_room()
-		if edi.get_selection().get_selected_nodes().size() > 0:
-			if edi.get_selection().get_selected_nodes()[0].is_in_group("editor_room"):
-				selected_room = edi.get_selection().get_selected_nodes()[0]
-
 func func_is_in_group(group_name):
 	return func (node): return node.is_in_group(group_name)
 
@@ -45,9 +38,9 @@ func _input(event):
 			"Alt+1":
 				select_node(selected_room)
 			"Alt+2":
-				select_node(selected_room.get_node("Resetables/TileMap"))
-			"Alt+3":
 				select_node(selected_room.get_node("Resetables"))
+			"Alt+3":
+				select_node(selected_room.get_node("Resetables/TileMap"))
 			"Alt+4":
 				var ts = selected_room.get_node("Resetables").get_children().filter(func_is_in_group("trigger"))
 				if !ts.is_empty():
@@ -61,18 +54,21 @@ func _input(event):
 				if p:
 					var mousepos = p.get_viewport().get_mouse_position()
 					p.global_position = Vector2(round(mousepos.x/6) * 6, round(mousepos.y/6) * 6) # snap to grid
-
-func change_selected_room():
-	if Engine.is_editor_hint() && edi.get_selection().get_selected_nodes().size() > 0:
-		if edi.get_selection().get_selected_nodes()[0].is_in_group("room"):
-			if selected_room != edi.get_selection().get_selected_nodes()[0]:
-				selected_room = edi.get_selection().get_selected_nodes()[0]
-				trigger_idx = -1
-
+			"Alt+C":
+				var rooms = get_tree().get_nodes_in_group("room")
+				var complete = rooms.filter(func (r): return !r.name.contains("Room"))
+				prints(complete.size(), "/", rooms.size())
+				print(str(rooms.size()-complete.size()) + " rooms remaining")
+				var time_left = ceil((1704027600 - Time.get_unix_time_from_system()) / (60*60*24))
+				print(str(time_left) + " days remaining")
+				
 func select_node(node:Node):
 	edi.get_selection().clear()
 	edi.get_selection().add_node(node)
 	edi.get_selection().emit_signal("selection_changed")
+	if node.is_in_group("room"):
+		selected_room = node
+		trigger_idx = -1
 
 func set_equivalent_child(selected_node):
 	if selected_node == null:

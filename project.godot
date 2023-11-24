@@ -13,7 +13,7 @@ config_version=5
 config/name="hole_report"
 run/main_scene="res://Content/main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
-boot_splash/bg_color=Color(0.0509804, 0.0588235, 0.160784, 1)
+boot_splash/bg_color=Color(0.054902, 0.0823529, 0.117647, 1)
 config/icon="res://icon.png"
 
 [autoload]
@@ -89,6 +89,7 @@ attack={
 2d_physics/layer_5="interact"
 2d_physics/layer_6="spike"
 2d_physics/layer_7="water"
+2d_physics/layer_8="room"
 
 [physics]
 
@@ -99,6 +100,6 @@ attack={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.0509804, 0.0588235, 0.160784, 1)
+environment/defaults/default_clear_color=Color(0.054902, 0.0823529, 0.117647, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Content/Trigger/ChangeRespawnTrigger.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
+resource_local_to_scene = true
 
 [node name="ChangeRespawnTrigger" type="Area2D"]
 collision_layer = 0
@@ -14,7 +15,6 @@ modulate = Color(0.721569, 1, 0.756863, 1)
 shape = SubResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_top = 10.0
 offset_right = 2.0
 offset_bottom = 12.0

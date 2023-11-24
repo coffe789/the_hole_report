@@ -17,15 +17,16 @@ collision_layer = 8
 script = ExtResource("1_40txd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_mtpay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -6)
 texture = ExtResource("1_xu34u")
 hframes = 2
 
 [node name="Hat" type="CharacterBody2D" parent="."]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hat"]
 position = Vector2(0, -5)
@@ -33,19 +34,21 @@ shape = SubResource("RectangleShape2D_oebxj")
 one_way_collision = true
 
 [node name="RxHitbox" parent="." instance=ExtResource("3_xaqvt")]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_mtpay")
 
 [node name="TxHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("4_25ao4")]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TxHitbox"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_mtpay")
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.5
 autostart = true
 
 [node name="PrejumpTimer" type="Timer" parent="."]

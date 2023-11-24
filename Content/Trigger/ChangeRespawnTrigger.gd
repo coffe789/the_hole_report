@@ -5,6 +5,8 @@ extends Trigger
 func _ready():
 	super()
 	if !get_tree().debug_collisions_hint || Engine.is_editor_hint():
+		$ColorRect.visible = true
+	else:
 		$ColorRect.visible = false
 
 func activate():

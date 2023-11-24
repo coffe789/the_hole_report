@@ -50,5 +50,6 @@ func _on_rx_hitbox_damage_received(amount, damage_source):
 func _on_timer_timeout():
 	var p_instance = projectile.instantiate()
 	p_instance.direction.x = facing
+	p_instance.speed = 50
 	get_tree().root.add_child(p_instance)
-	p_instance.global_position = global_position
+	p_instance.global_position = $CollisionShape2D.global_position
