@@ -1,7 +1,7 @@
 extends State
 
 func enter():
-	pass
+	pass#target.get_node("GPUParticles2D").emitting = true
 
 func update(delta):
 	target.move(delta)

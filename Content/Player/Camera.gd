@@ -12,10 +12,10 @@ func _physics_process(_delta):
 
 func set_camera_limits(room_shape):
 	var room_size = room_shape.shape.extents * 2
-	limit_left = room_shape.global_position.x - room_size.x / 2
-	limit_top = room_shape.global_position.y - room_size.y / 2
-	limit_right = limit_left + room_size.x - 1 # Minus 1 fixes weirdness...
-	limit_bottom = limit_top + room_size.y
+	limit_left = round(room_shape.global_position.x - room_size.x / 2)
+	limit_top = round(room_shape.global_position.y - room_size.y / 2)
+	limit_right = round(limit_left + room_size.x)
+	limit_bottom = round(limit_top + room_size.y)
 
 func on_room_changed(room):
 	if current_room == null:
@@ -31,6 +31,7 @@ func on_room_changed(room):
 			if is_instance_valid(p):
 				p.queue_free()
 		get_tree().paused = false
+		reset_smoothing()
 		current_room.exit()
 	
 	current_room = room

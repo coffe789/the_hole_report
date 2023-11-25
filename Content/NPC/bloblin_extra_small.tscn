@@ -39,7 +39,7 @@ speed = 24.75
 hp = 1
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(0, 4)
+position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_vd53d")
 frame_progress = 0.0
 

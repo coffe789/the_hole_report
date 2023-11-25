@@ -15,8 +15,8 @@ func exit():
 	pass
 
 func try_transition() -> State:
-	if transitions.is_jump():
-		return get_node("../Jump")
+#	if transitions.is_jump():
+#		return get_node("../Jump")
 	if transitions.is_grounded():
 		return get_node("../Ground")
 	return null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://o7ajaubg1qid"]
+[gd_scene load_steps=23 format=3 uid="uid://o7ajaubg1qid"]
 
 [ext_resource type="Script" path="res://Content/Util/Statemachine/StateMachine.gd" id="1_a2drm"]
 [ext_resource type="Script" path="res://Content/Player/player.gd" id="1_jlimy"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="9_gbjrn"]
 [ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="10_0gcvt"]
 [ext_resource type="Script" path="res://Content/Player/player_tx_hitbox.gd" id="11_nd7xw"]
+[ext_resource type="PackedScene" uid="uid://d2qi2dxn7mqpi" path="res://Content/VFX/dust_particles.tscn" id="12_bsp4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l55rt"]
 size = Vector2(6, 10)
@@ -159,7 +160,7 @@ script = ExtResource("1_jlimy")
 shape = SubResource("RectangleShape2D_l55rt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 6)
 texture = ExtResource("2_e4506")
 offset = Vector2(2, -7)
 hframes = 8
@@ -188,12 +189,17 @@ script = ExtResource("6_00sl3")
 script = ExtResource("4_6xyjs")
 
 [node name="RoomFinder" type="Area2D" parent="." groups=["player_room_finder"]]
+position = Vector2(0, -2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomFinder"]
-position = Vector2(0, -2)
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_uik2f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomFinder"]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_uik2f")
 
 [node name="PrejumpTimer" type="Timer" parent="."]
@@ -250,6 +256,10 @@ hit_from_inside = true
 position = Vector2(3, 13)
 target_position = Vector2(0, 0.5)
 hit_from_inside = true
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("12_bsp4v")]
+emitting = false
+randomness = 0.0
 
 [connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
 [connection signal="body_entered" from="TxHitbox" to="TxHitbox" method="_on_body_entered"]
