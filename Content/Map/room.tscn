@@ -25,6 +25,7 @@ script = ExtResource("2_pycg7")
 [node name="TileMap" type="TileMap" parent="Resetables"]
 tile_set = ExtResource("3_wpkhv")
 format = 2
+layer_0/name = "default"
 layer_0/z_index = 3
 layer_1/name = "z1"
 layer_1/enabled = true
@@ -47,6 +48,13 @@ layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 4
 layer_3/tile_data = PackedInt32Array()
+layer_4/name = "behind2"
+layer_4/enabled = true
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = -4
+layer_4/tile_data = PackedInt32Array()
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

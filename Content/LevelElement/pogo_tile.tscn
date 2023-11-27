@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyyhwfj0wu3bv"]
+
+[ext_resource type="Texture2D" uid="uid://dvw62huc567qv" path="res://Art/block_b.png" id="1_7xa15"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07ysi"]
+size = Vector2(16, 16)
+
+[node name="PogoTile" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7xa15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_07ysi")
