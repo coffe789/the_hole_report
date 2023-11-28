@@ -19,6 +19,12 @@ func _ready():
 	add_child(life_timer)
 	life_timer.connect("timeout", queue_free)
 	life_timer.start(lifetime)
+	
+	$RxHitbox.connect("damage_received", on_damage)
+
+func on_damage(amount, source):
+	if source.is_in_group("player_attack"):
+		queue_free()
 
 func get_next_position(delta):
 	return position + direction * delta * speed

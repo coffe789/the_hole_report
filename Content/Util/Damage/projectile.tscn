@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b66j8gauxj16h"]
+[gd_scene load_steps=6 format=3 uid="uid://b66j8gauxj16h"]
 
 [ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="1_x8nyr"]
 [ext_resource type="Script" path="res://Content/Util/Damage/projectile.gd" id="2_10jy4"]
 [ext_resource type="Texture2D" uid="uid://bntek8xwkir01" path="res://Art/projectile.png" id="3_x4wtt"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="4_j0s4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjomd"]
 size = Vector2(3, 3)
@@ -25,6 +26,12 @@ texture = ExtResource("3_x4wtt")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="2"]
 target_position = Vector2(0, 0)
+
+[node name="RxHitbox" parent="." index="3" instance=ExtResource("4_j0s4k")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox" index="0"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_sjomd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

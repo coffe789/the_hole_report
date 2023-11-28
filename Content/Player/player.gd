@@ -103,5 +103,5 @@ func _on_water_finder_body_exited(_body):
 
 
 func _on_tx_hitbox_target_found(target):
-	if not target.is_in_group("player_rxbox"):
+	if not target.is_in_group("player_rxbox") and not target.get_parent().is_in_group("projectile"):
 		velocity.x = -sign($Sprite2D.scale.x) * 150
