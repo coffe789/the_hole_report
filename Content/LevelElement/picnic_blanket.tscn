@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c28f2vo66hxlt"]
+[gd_scene load_steps=6 format=3 uid="uid://c28f2vo66hxlt"]
 
 [ext_resource type="Texture2D" uid="uid://dtp741p3vyja3" path="res://Art/fg_blanket_beg.png" id="1_l7fki"]
 [ext_resource type="Script" path="res://Content/LevelElement/PicnicBlanket.gd" id="2_qmbrk"]
 [ext_resource type="PackedScene" uid="uid://btq51iwxqatrc" path="res://Content/Util/interactable.tscn" id="3_m16k1"]
+[ext_resource type="FontFile" uid="uid://b2yoma8fuinf1" path="res://Content/Resource/roomfont.ttf" id="4_a3afq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysh5q"]
+size = Vector2(8, 5)
 
 [node name="PicnicBlanket" type="Sprite2D"]
 z_index = 5
@@ -11,6 +15,20 @@ script = ExtResource("2_qmbrk")
 
 [node name="Interactable" parent="." instance=ExtResource("3_m16k1")]
 position = Vector2(-4, -11)
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_ysh5q")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Interactable/dir" index="0"]
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 32.0
+offset_bottom = 28.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.721569, 0.721569, 0.721569, 1)
+theme_override_fonts/normal_font = ExtResource("4_a3afq")
+text = "SAVE"
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
 

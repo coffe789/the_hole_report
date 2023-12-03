@@ -61,7 +61,7 @@ func _input(event):
 				print(str(rooms.size()-complete.size()) + " rooms remaining")
 				var time_left = ceil((1704027600 - Time.get_unix_time_from_system()) / (60*60*24))
 				print(str(time_left) + " days remaining")
-				
+
 func select_node(node:Node):
 	edi.get_selection().clear()
 	edi.get_selection().add_node(node)

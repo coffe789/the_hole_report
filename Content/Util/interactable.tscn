@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Content/Util/Interactable.gd" id="1_2kd8u"]
 [ext_resource type="Texture2D" uid="uid://bbiuengqpnvga" path="res://Art/direction.png" id="2_hofux"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wlhg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci2m2"]
 size = Vector2(29, 5)
 
 [node name="Interactable" type="Area2D"]
@@ -14,7 +14,7 @@ script = ExtResource("1_2kd8u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(0.133333, 1, 1, 1)
 position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_3wlhg")
+shape = SubResource("RectangleShape2D_ci2m2")
 
 [node name="dir" type="Sprite2D" parent="."]
 visible = false
