@@ -1,11 +1,11 @@
 extends Sprite2D
 
-@export var dialogue_offset = Vector2(-16, -12)
-@export var player_dialogue_offset = Vector2(-16, -12)
+@export var dialogue_offset = Vector2(-16, -14)
+@export var player_dialogue_offset = Vector2(-16, -14)
+@export var is_dialogue_below = false
 @onready var tb_scene = preload("res://Content/UI/textbox.tscn")
 var dialogues: Array[Dialogue]= []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Interactable.connect("interact", on_interact)
 	for c in get_children():
@@ -30,6 +30,7 @@ func on_interact():
 var idx = 0
 func next_dialogue():
 	var tb = tb_scene.instantiate()
+	tb.is_upside_down = is_dialogue_below
 	if dialogues[idx].is_player:
 		var p = Global.get_unique("player")
 		add_child.call_deferred(tb)

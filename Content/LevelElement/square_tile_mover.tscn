@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Content/LevelElement/SquareTileMover.gd" id="2_huhyw"]
 
 [node name="SquareTileMover" type="TileMap"]
+process_mode = 3
 tile_set = ExtResource("1_8jirl")
 collision_animatable = true
 format = 2

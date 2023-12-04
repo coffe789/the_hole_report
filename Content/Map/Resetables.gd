@@ -5,7 +5,7 @@ signal ready_resetable
 
 func create_scene():
 	var packed_scene = PackedScene.new()
-	recursive_set_owner(self)
+	recursive_set_owner(self, self)
 	packed_scene.pack(self)
 	return packed_scene
 
@@ -13,17 +13,17 @@ func recursive_set_signal(node):
 	if node != self:
 		if node.has_method("ready_resetable"):
 			connect("ready_resetable", node.ready_resetable)
-	for child in node.get_children():
-		recursive_set_owner(child)
+	#for child in node.get_children():
+		#recursive_set_owner(child)
 
-func recursive_set_owner(node):
-	#This line turns all scenes into local branches to prevent a duplication bug
-	#node.set_filename("")
+func recursive_set_owner(scene_root, node):
 	if node != self:
-		node.set_owner(self)
+		if node.owner != scene_root:
+			node.owner = self
+		if node.scene_file_path:
+			scene_root = node
 	for child in node.get_children():
-		recursive_set_owner(child)
-	return
+		recursive_set_owner(scene_root, child)
 
 func init_children():
 	pass

@@ -35,6 +35,8 @@ func _ready():
 		offset = points[corner]
 		corner = ((corner + dir) + 4) % 4
 		to_point = points[corner]
+		await get_tree().physics_frame # I hate godot 4.2
+		process_mode = Node.PROCESS_MODE_INHERIT
 
 func _draw():
 	if Engine.is_editor_hint():

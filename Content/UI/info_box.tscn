@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ur3efb7h7hd8"]
+[gd_scene load_steps=3 format=3 uid="uid://ur3efb7h7hd8"]
 
 [ext_resource type="Script" path="res://Content/UI/info_box.gd" id="1_dpdcr"]
-[ext_resource type="FontFile" uid="uid://cu2o6qxrg642x" path="res://Content/Resource/PixelGamingRegular-d9w0g.ttf" id="2_xmwge"]
 [ext_resource type="Script" path="res://Content/Resource/dialogue.gd" id="3_i8wpc"]
 
 [node name="InfoBox" type="CanvasLayer"]
@@ -22,7 +21,7 @@ offset_top = 33.0
 offset_right = 247.0
 offset_bottom = 127.0
 scale = Vector2(0.5, 0.5)
-theme_override_fonts/normal_font = ExtResource("2_xmwge")
+theme_override_constants/line_separation = 2
 text = "hi"
 fit_content = true
 scroll_active = false
