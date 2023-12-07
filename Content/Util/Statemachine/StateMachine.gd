@@ -23,7 +23,7 @@ func update(delta):
 		transition_state(new_state)
 
 func transition_state(new_state):
-	print(current_state.name + " -> " + new_state.name)
+	#print(current_state.name + " -> " + new_state.name)
 	current_state.exit()
 	new_state.enter()
 	

@@ -18,6 +18,7 @@ hp = 3
 
 [node name="RxHitbox" parent="." instance=ExtResource("1_s458s")]
 position = Vector2(0, -3)
+i_seconds = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
 position = Vector2(-1, 0.5)
