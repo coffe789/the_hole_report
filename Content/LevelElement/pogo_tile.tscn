@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyyhwfj0wu3bv"]
+[gd_scene load_steps=5 format=3 uid="uid://cyyhwfj0wu3bv"]
 
 [ext_resource type="Texture2D" uid="uid://dvw62huc567qv" path="res://Art/block_b.png" id="1_7xa15"]
+[ext_resource type="Script" path="res://Content/LevelElement/pogo_tile.gd" id="1_i0ktx"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="3_iwijc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07ysi"]
 size = Vector2(16, 16)
 
 [node name="PogoTile" type="StaticBody2D"]
+script = ExtResource("1_i0ktx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7xa15")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_07ysi")
+
+[node name="RxHitbox" parent="." instance=ExtResource("3_iwijc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RxHitbox"]
+shape = SubResource("RectangleShape2D_07ysi")
+
+[connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]

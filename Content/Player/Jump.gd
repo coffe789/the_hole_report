@@ -20,6 +20,8 @@ func exit():
 func try_transition() -> State:
 	if transitions.is_grounded():
 		return get_node("../Ground")
+	if transitions.is_pogo():
+		return get_node("../Pogo")
 	if transitions.is_fall():
 		return get_node("../Fall")
 	return null

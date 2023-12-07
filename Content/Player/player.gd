@@ -5,6 +5,7 @@ const INPUT_ACCEL = 30.0 * 60.0
 const JUMP_SPEED = -150.0
 var max_speed = Vector2(75, 200)
 var gravity = 400
+var has_pogo = true
 
 var accel = Vector2.ZERO
 var is_attacking = false
@@ -29,6 +30,9 @@ func move(delta):
 	velocity.y = clampf(velocity.y, -INF, max_speed.y)
 	
 	move_and_slide()
+	
+	if position.x - int(position.x) == 0.5:
+		position.x += 0.01
 	
 	if Input.is_action_just_pressed("ui_down") and is_on_floor()\
 	 and !$FallthruDetectL.is_colliding() and !$FallthruDetectR.is_colliding():

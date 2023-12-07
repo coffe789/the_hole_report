@@ -19,4 +19,8 @@ func try_transition() -> State:
 		return get_node("../Jump")
 	if transitions.is_fall():
 		return get_node("../Fall")
+	if transitions.is_grounded():
+		return get_node("../Ground")
+	if transitions.is_pogo():
+		return get_node("../Pogo")
 	return null

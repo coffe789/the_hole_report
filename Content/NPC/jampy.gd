@@ -34,7 +34,7 @@ func _physics_process(delta):
 		$Sprite2D.frame = 0
 
 func _on_rx_hitbox_damage_received(amount, damage_source):
-	if damage_source.is_in_group("player_attack"):
+	if damage_source.is_in_group("player_attack") and !damage_source.is_in_group("pogo"):
 		hp -= amount
 		if hp == 0:
 			Global.do_death_animation(global_position, 0.9, 4)

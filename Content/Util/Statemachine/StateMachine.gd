@@ -9,6 +9,7 @@ func init_machine(target, init_state):
 	for state in $States.get_children():
 		assert(state is State)
 		state.target = target
+		state.SM = self
 		state.transitions = $Transitions
 	
 	current_state = init_state
@@ -22,7 +23,7 @@ func update(delta):
 		transition_state(new_state)
 
 func transition_state(new_state):
-#	print(current_state.name + " -> " + new_state.name)
+	print(current_state.name + " -> " + new_state.name)
 	current_state.exit()
 	new_state.enter()
 	

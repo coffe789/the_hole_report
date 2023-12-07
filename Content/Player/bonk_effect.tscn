@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://u3dop8y3ll6y"]
+
+[ext_resource type="Script" path="res://Content/Player/BonkEffect.gd" id="1_it3ww"]
+[ext_resource type="Texture2D" uid="uid://be7cjl1ws4rwb" path="res://Art/bonk_effect.png" id="1_wyr3c"]
+
+[node name="BonkEffect" type="Sprite2D"]
+z_index = 4
+z_as_relative = false
+texture = ExtResource("1_wyr3c")
+script = ExtResource("1_it3ww")

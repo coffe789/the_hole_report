@@ -25,7 +25,7 @@ position = Vector2(0, -7)
 texture = ExtResource("1_xu34u")
 hframes = 2
 
-[node name="Hat" type="CharacterBody2D" parent="."]
+[node name="Hat" type="CharacterBody2D" parent="." groups=["bonker"]]
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hat"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://o7ajaubg1qid"]
+[gd_scene load_steps=26 format=3 uid="uid://o7ajaubg1qid"]
 
 [ext_resource type="Script" path="res://Content/Util/Statemachine/StateMachine.gd" id="1_a2drm"]
 [ext_resource type="Script" path="res://Content/Player/player.gd" id="1_jlimy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Content/Player/Ground.gd" id="4_gqrb4"]
 [ext_resource type="Script" path="res://Content/Player/Jump.gd" id="5_s68ql"]
 [ext_resource type="Script" path="res://Content/Player/Fall.gd" id="6_00sl3"]
+[ext_resource type="Script" path="res://Content/Player/Pogo.gd" id="8_wx614"]
 [ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="9_gbjrn"]
 [ext_resource type="PackedScene" uid="uid://dbnheiheigdfg" path="res://Content/Util/Damage/tx_hitbox.tscn" id="10_0gcvt"]
 [ext_resource type="Script" path="res://Content/Player/player_tx_hitbox.gd" id="11_nd7xw"]
@@ -133,6 +134,22 @@ tracks/0/keys = {
 "values": [1, 0]
 }
 
+[sub_resource type="Animation" id="Animation_fs2y2"]
+resource_name = "pogo"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akj71"]
 _data = {
 "RESET": SubResource("Animation_8wkdf"),
@@ -140,6 +157,7 @@ _data = {
 "fall": SubResource("Animation_qibqy"),
 "idle": SubResource("Animation_4mq73"),
 "jump": SubResource("Animation_6orsi"),
+"pogo": SubResource("Animation_fs2y2"),
 "walk": SubResource("Animation_23hg2")
 }
 
@@ -148,6 +166,9 @@ size = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_600s1"]
 size = Vector2(19, 13.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s26ah"]
+size = Vector2(6, 4)
 
 [node name="Player" type="CharacterBody2D" groups=["can_collect_truffies", "player"]]
 z_as_relative = false
@@ -163,7 +184,7 @@ shape = SubResource("RectangleShape2D_l55rt")
 position = Vector2(0, 6)
 texture = ExtResource("2_e4506")
 offset = Vector2(2, -7)
-hframes = 8
+hframes = 9
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -184,6 +205,9 @@ script = ExtResource("5_s68ql")
 
 [node name="Fall" type="Node" parent="SM/States"]
 script = ExtResource("6_00sl3")
+
+[node name="Pogo" type="Node" parent="SM/States"]
+script = ExtResource("8_wx614")
 
 [node name="Transitions" type="Node" parent="SM"]
 script = ExtResource("4_6xyjs")
@@ -233,6 +257,18 @@ shape = SubResource("RectangleShape2D_600s1")
 disabled = true
 metadata/_edit_lock_ = true
 
+[node name="PogoTxHitbox" parent="." groups=["player_attack", "pogo"] instance=ExtResource("10_0gcvt")]
+position = Vector2(9, 0)
+collision_layer = 1
+collision_mask = 133
+monitoring = false
+monitorable = true
+script = ExtResource("11_nd7xw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PogoTxHitbox"]
+position = Vector2(-9, 10)
+shape = SubResource("RectangleShape2D_s26ah")
+
 [node name="WaterFinder" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 64
@@ -264,6 +300,9 @@ randomness = 0.0
 [connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
 [connection signal="body_entered" from="TxHitbox" to="TxHitbox" method="_on_body_entered"]
 [connection signal="target_found" from="TxHitbox" to="." method="_on_tx_hitbox_target_found"]
+[connection signal="area_entered" from="PogoTxHitbox" to="SM/States/Pogo" method="_on_pogo_tx_hitbox_area_entered"]
+[connection signal="body_entered" from="PogoTxHitbox" to="SM/States/Pogo" method="_on_pogo_tx_hitbox_body_entered"]
+[connection signal="body_entered" from="PogoTxHitbox" to="PogoTxHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="WaterFinder" to="." method="_on_water_finder_body_entered"]
 [connection signal="body_exited" from="WaterFinder" to="." method="_on_water_finder_body_exited"]
 [connection signal="body_entered" from="SpikeDetect" to="." method="_on_spike_detect_body_entered"]

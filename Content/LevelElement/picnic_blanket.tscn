@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://b2yoma8fuinf1" path="res://Content/Resource/roomfont.ttf" id="4_a3afq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysh5q"]
-size = Vector2(8, 5)
+size = Vector2(8, 34.5)
 
 [node name="PicnicBlanket" type="Sprite2D"]
 z_index = 5
@@ -17,7 +17,7 @@ script = ExtResource("2_qmbrk")
 position = Vector2(-4, -11)
 
 [node name="CollisionShape2D" parent="Interactable" index="0"]
-position = Vector2(1, 3)
+position = Vector2(1, -11.75)
 shape = SubResource("RectangleShape2D_ysh5q")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Interactable/dir" index="0"]

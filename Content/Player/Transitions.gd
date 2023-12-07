@@ -12,3 +12,6 @@ func is_grounded():
 
 func is_fall():
 	return target.velocity.y > 0
+
+func is_pogo():
+	return !target.is_attacking && target.has_pogo && Input.is_action_pressed("ui_down")
