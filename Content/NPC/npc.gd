@@ -41,3 +41,14 @@ func next_dialogue():
 	tb.dialogue = dialogues[idx].dialogue
 	idx += 1
 	return tb
+
+# Only used in special case
+func _on_area_2d_body_entered(body):
+	get_tree().paused = true
+	for d in dialogues:
+		var tb = next_dialogue()
+		await tb.done
+	idx = 0
+
+	get_tree().paused = false
+	queue_free()

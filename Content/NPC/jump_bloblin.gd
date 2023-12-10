@@ -6,7 +6,7 @@ const SPEED = 300.0
 var jump_count = 0
 @export var hp = 2
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var gravity = 200
 
 func _ready():
 	velocity.y = JUMP_VELOCITY

@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=3 uid="uid://bq2rublwk60s4"]
+[gd_scene load_steps=168 format=3 uid="uid://bq2rublwk60s4"]
 
 [ext_resource type="Texture2D" uid="uid://s5btavi7ibmb" path="res://Art/bg0.png" id="1_2yt03"]
 [ext_resource type="Script" path="res://Content/Map/world.gd" id="1_uklxy"]
@@ -61,12 +61,18 @@
 [ext_resource type="Texture2D" uid="uid://3r3iignq2jaw" path="res://Art/productivity.png" id="61_0bcp0"]
 [ext_resource type="Texture2D" uid="uid://co5ln7ktxqth4" path="res://Art/fire.png" id="61_l85sk"]
 [ext_resource type="Texture2D" uid="uid://c7mmyw2coaadc" path="res://Art/cabinet_long.png" id="62_boiag"]
+[ext_resource type="Texture2D" uid="uid://dxb1ojjf0he7r" path="res://Art/trash_d.png" id="62_exifk"]
 [ext_resource type="Texture2D" uid="uid://cqkgtp16lyakw" path="res://Art/frog_boss.png" id="63_btp02"]
+[ext_resource type="Texture2D" uid="uid://rrjwoyd31wsb" path="res://Art/trash_e.png" id="63_kpa06"]
 [ext_resource type="Script" path="res://Content/LevelElement/temp_pogo_item.gd" id="64_1ysah"]
 [ext_resource type="Texture2D" uid="uid://m8sf8gkgj228" path="res://Art/tax_fraud.png" id="64_ofpo6"]
+[ext_resource type="Texture2D" uid="uid://bguy8bp727pr3" path="res://Art/theory.png" id="64_w5de3"]
+[ext_resource type="Texture2D" uid="uid://c3snvolom27m8" path="res://Art/trash_f.png" id="65_1yeyo"]
 [ext_resource type="Texture2D" uid="uid://yd1i0a838u4y" path="res://Art/trash_a.png" id="65_b1783"]
 [ext_resource type="Texture2D" uid="uid://doj03xqbddbwp" path="res://Art/hazard_reports.png" id="65_xahgr"]
 [ext_resource type="Texture2D" uid="uid://wm4vu615c3tp" path="res://Art/trash_b.png" id="66_gusvf"]
+[ext_resource type="Texture2D" uid="uid://cygt5xouyuo4a" path="res://Art/trash_g.png" id="66_pkipw"]
+[ext_resource type="Texture2D" uid="uid://uiprkw5rfkpp" path="res://Art/coffee.png" id="67_2s62m"]
 [ext_resource type="Texture2D" uid="uid://cp66ge882hgs2" path="res://Art/trash_c.png" id="67_ajacy"]
 [ext_resource type="Texture2D" uid="uid://3mwb2kb4lmkt" path="res://Art/deer.png" id="70_83wb5"]
 
@@ -427,6 +433,9 @@ size = Vector2(224, 126)
 resource_local_to_scene = true
 size = Vector2(224, 126)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfo5j"]
+size = Vector2(88, 5)
+
 [node name="World" type="Node2D" groups=["world"]]
 script = ExtResource("1_uklxy")
 
@@ -439,7 +448,7 @@ position_smoothing_speed = 7.0
 script = ExtResource("2_ewx0t")
 
 [node name="Player" parent="." instance=ExtResource("5_axxvd")]
-position = Vector2(102, 108)
+position = Vector2(102, 102)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_til7y")
@@ -1977,11 +1986,11 @@ texture = ExtResource("51_qnfv3")
 
 [node name="Entrancewidehouse" parent="puddle moat" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
 position = Vector2(-108, 71)
-target = NodePath("../../Room4/Entrancewidehouse")
+target = NodePath("../../gossip guru/Entrancewidehouse")
 
 [node name="Entranceverysecret" parent="puddle moat" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
 position = Vector2(-108, 34)
-target = NodePath("../../Room4/Entranceverysecret")
+target = NodePath("../../gossip guru/Entranceverysecret")
 
 [node name="Entrancehq" parent="puddle moat" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
 position = Vector2(117, 38)
@@ -2403,13 +2412,13 @@ texture = ExtResource("50_22ujs")
 process_mode = 3
 light_mask = 0
 z_index = -2
-position = Vector2(-92, 22)
+position = Vector2(-109, 22)
 amount = 4
 preprocess = 3.0
 
 [node name="Sprite2D7" type="Sprite2D" parent="pendre town/Resetables" index="8"]
 z_index = -1
-position = Vector2(-92, 23)
+position = Vector2(-109, 23)
 texture = ExtResource("52_fi4oh")
 
 [node name="Sprite2D8" type="Sprite2D" parent="pendre town/Resetables" index="9"]
@@ -2512,43 +2521,88 @@ offset_top = -46.0
 offset_right = 104.0
 offset_bottom = 56.0
 color = Color(0, 0, 0, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Croc house/Resetables" index="2"]
 z_index = -1
-position = Vector2(-56, 48)
+position = Vector2(76.5, 49)
 texture = ExtResource("25_768hp")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Croc house/Resetables" index="3"]
 z_index = -1
-position = Vector2(-81, 50)
+position = Vector2(51.5, 50)
 texture = ExtResource("26_scsjf")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Croc house/Resetables" index="4"]
 z_index = -2
-position = Vector2(56, -8)
+position = Vector2(-66, -8)
 texture = ExtResource("60_6ifdm")
 
 [node name="Sprite2D4" type="AnimatedSprite2D" parent="Croc house/Resetables" index="5"]
 z_index = -1
-position = Vector2(57, 51)
+position = Vector2(-65, 51)
 sprite_frames = SubResource("SpriteFrames_4jo7f")
 autoplay = "default"
+
+[node name="NPC" parent="Croc house/Resetables" index="6" instance=ExtResource("12_5073p")]
+position = Vector2(-83, 48)
+texture = ExtResource("3_gr0vp")
+flip_h = true
+
+[node name="Dialogue" parent="Croc house/Resetables/NPC" index="1"]
+dialogue = Array[String](["sorry about my sister. she can be a bit much sometimes haha"])
+
+[node name="Dialogue2" type="Node" parent="Croc house/Resetables/NPC"]
+script = ExtResource("13_lj3s4")
+is_player = true
+dialogue = Array[String](["Don't worry, as a journalist I have dealt with much worse."])
+
+[node name="Dialogue3" type="Node" parent="Croc house/Resetables/NPC"]
+script = ExtResource("13_lj3s4")
+dialogue = Array[String](["you really take your job seriously huh..", "in any case, feel free to stick around by the fire for a bit. you must have a rough day."])
+
+[node name="Dialogue4" type="Node" parent="Croc house/Resetables/NPC"]
+script = ExtResource("13_lj3s4")
+is_player = true
+dialogue = Array[String](["..Thanks"])
+
+[node name="NPC2" parent="Croc house/Resetables" index="7" instance=ExtResource("12_5073p")]
+position = Vector2(-41, 48)
+texture = ExtResource("10_77050")
+flip_h = true
+
+[node name="Dialogue" parent="Croc house/Resetables/NPC2" index="1"]
+is_player = true
+dialogue = Array[String](["Wait did I not literally just see you outside?", "How did you get in here before me?"])
+
+[node name="Dialogue2" type="Node" parent="Croc house/Resetables/NPC2"]
+script = ExtResource("13_lj3s4")
+dialogue = Array[String](["i sneaked in when you weren't looking!!! hehehe"])
+
+[node name="Dialogue3" type="Node" parent="Croc house/Resetables/NPC2"]
+script = ExtResource("13_lj3s4")
+is_player = true
+dialogue = Array[String](["Okay, but why?"])
+
+[node name="Dialogue4" type="Node" parent="Croc house/Resetables/NPC2"]
+script = ExtResource("13_lj3s4")
+dialogue = Array[String](["don't question me!!!"])
 
 [node name="Entrance" parent="Croc house" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
 position = Vector2(0, 41)
 target = NodePath("../../pendre town/Entrance")
 
-[node name="Room4" parent="." instance=ExtResource("12_ngnwq")]
+[node name="gossip guru" parent="." instance=ExtResource("12_ngnwq")]
 position = Vector2(2856, -32)
 
-[node name="CollisionShape2D" parent="Room4" index="0"]
+[node name="CollisionShape2D" parent="gossip guru" index="0"]
 shape = SubResource("RectangleShape2D_u854d")
 
-[node name="TileMap" parent="Room4/Resetables" index="0"]
-layer_0/tile_data = PackedInt32Array(-393237, 851969, 1, -327701, 851969, 1, -262165, 851969, 1, -196629, 851969, 1, -131093, 851969, 1, -65557, 851969, 1, -21, 851969, 1, 65515, 851969, 1, 131051, 851969, 1, 196587, 851969, 1, 262123, 851969, 1, 327659, 851969, 1, 393195, 851969, 1, 458731, 851969, 1, 524267, 851969, 1, -393236, 851969, 1, -327700, 851969, 1, -262164, 851969, 1, -196628, 851969, 1, -131092, 851969, 1, -65556, 851969, 1, -20, 786433, 4, 65516, 917505, 1, 131052, 917505, 1, 196588, 917505, 1, 262124, 917505, 1, 327660, 917505, 1, 393196, 917505, 1, 458732, 786433, 5, 524268, 851969, 1, -393235, 851969, 1, -327699, 851969, 1, -262163, 851969, 1, -196627, 851969, 1, 458733, 851969, 0, 524269, 851969, 1, -393234, 851969, 1, -327698, 851969, 1, -262162, 851969, 1, -196626, 851969, 1, 458734, 851969, 0, 524270, 851969, 1, -393233, 851969, 1, -327697, 851969, 1, -262161, 851969, 1, -196625, 851969, 1, 458735, 851969, 0, 524271, 851969, 1, -393232, 851969, 1, -327696, 851969, 1, -262160, 851969, 1, -196624, 851969, 1, 458736, 851969, 0, 524272, 851969, 1, -393231, 851969, 1, -327695, 851969, 1, -262159, 851969, 1, -196623, 851969, 1, 458737, 851969, 0, 524273, 851969, 1, -393230, 851969, 1, -327694, 851969, 1, -262158, 851969, 1, -196622, 851969, 1, 458738, 851969, 0, 524274, 851969, 1, -393229, 851969, 1, -327693, 851969, 1, -262157, 851969, 1, -196621, 851969, 1, 458739, 851969, 0, 524275, 851969, 1, -393228, 851969, 1, -327692, 851969, 1, -262156, 851969, 1, 458740, 851969, 0, 524276, 851969, 1, -393227, 851969, 1, -327691, 851969, 1, -262155, 851969, 1, 458741, 851969, 0, 524277, 851969, 1, -393226, 851969, 1, -327690, 851969, 1, -262154, 851969, 1, 458742, 851969, 0, 524278, 851969, 1, -393225, 851969, 1, -327689, 851969, 1, -262153, 851969, 1, 458743, 851969, 0, 524279, 851969, 1, -393224, 851969, 1, -327688, 851969, 1, -262152, 851969, 1, 458744, 851969, 0, 524280, 851969, 1, -393223, 851969, 1, -327687, 851969, 1, -262151, 851969, 1, 458745, 851969, 0, 524281, 851969, 1, -393222, 851969, 1, -327686, 851969, 1, -262150, 851969, 1, 458746, 851969, 0, 524282, 851969, 1, -393221, 851969, 1, -327685, 851969, 1, -262149, 851969, 1, 458747, 851969, 0, 524283, 851969, 1, -393220, 851969, 1, -327684, 851969, 1, -262148, 851969, 1, 458748, 851969, 0, 524284, 851969, 1, -393219, 851969, 1, -327683, 851969, 1, -262147, 851969, 1, 458749, 851969, 0, 524285, 851969, 1, -393218, 851969, 1, -327682, 851969, 1, -262146, 851969, 1, 458750, 851969, 0, 524286, 851969, 1, -393217, 851969, 1, -327681, 851969, 1, -262145, 851969, 1, 458751, 851969, 0, 524287, 851969, 1, -458752, 851969, 1, -393216, 851969, 1, -327680, 851969, 1, 393216, 851969, 0, 458752, 851969, 1, -458751, 851969, 1, -393215, 851969, 1, -327679, 851969, 1, 393217, 851969, 0, 458753, 851969, 1, -458750, 851969, 1, -393214, 851969, 1, -327678, 851969, 1, 393218, 851969, 0, 458754, 851969, 1, -458749, 851969, 1, -393213, 851969, 1, -327677, 851969, 1, 393219, 851969, 0, 458755, 851969, 1, -458748, 851969, 1, -393212, 851969, 1, -327676, 851969, 1, 393220, 851969, 0, 458756, 851969, 1, -458747, 851969, 1, -393211, 851969, 1, -327675, 851969, 1, 393221, 851969, 0, 458757, 851969, 1, -458746, 851969, 1, -393210, 851969, 1, -327674, 851969, 1, 393222, 851969, 0, 458758, 851969, 1, -458745, 851969, 1, -393209, 851969, 1, -327673, 851969, 1, -262137, 851969, 1, -196601, 851969, 4, -131065, 786433, 2, 393223, 851969, 0, 458759, 851969, 1, -458744, 786433, 4, -393208, 917505, 1, -327672, 917505, 1, -262136, 917505, 1, -196600, 786433, 5, -131064, 851969, 2, 393224, 851969, 0, 458760, 851969, 1, -458743, 851969, 2, -131063, 851969, 2, 393225, 851969, 0, 458761, 851969, 1, -458742, 851969, 2, -131062, 851969, 2, 393226, 851969, 0, 458762, 851969, 1, -458741, 851969, 2, -131061, 851969, 2, 393227, 851969, 0, 458763, 851969, 1, -458740, 851969, 2, -131060, 851969, 2, 393228, 851969, 0, 458764, 851969, 1, -458739, 851969, 2, -131059, 851969, 2, 393229, 851969, 0, 458765, 851969, 1, -458738, 851969, 2, -131058, 851969, 2, 393230, 851969, 0, 458766, 851969, 1, -458737, 851969, 2, -131057, 851969, 2, 393231, 851969, 0, 458767, 851969, 1, -458736, 851969, 2, -131056, 851969, 2, 393232, 851969, 0, 458768, 851969, 1, -458735, 851969, 2, -131055, 851969, 2, 393233, 851969, 0, 458769, 851969, 1, -458734, 851969, 2, -131054, 851969, 4, 393234, 851969, 0, 458770, 851969, 1, -458733, 851969, 4, -393197, 786433, 1, -327661, 786433, 1, -262125, 786433, 1, -196589, 851969, 5, -131053, 851969, 1, -65517, 851969, 4, 19, 786433, 1, 65555, 786433, 1, 131091, 786433, 1, 196627, 786433, 1, 262163, 786433, 1, 327699, 786433, 1, 393235, 851969, 5, 458771, 851969, 1, -458732, 851969, 1, -393196, 851969, 1, -327660, 851969, 1, -262124, 851969, 1, -196588, 851969, 1, -131052, 851969, 1, -65516, 851969, 1, 20, 851969, 1, 65556, 851969, 1, 131092, 851969, 1, 196628, 851969, 1, 262164, 851969, 1, 327700, 851969, 1, 393236, 851969, 1, 458772, 851969, 1, -131091, 851969, 1, -131090, 851969, 1, -131089, 851969, 1, -131088, 851969, 1, -131087, 851969, 1, -131086, 851969, 1, -131085, 786433, 4, -196620, 851969, 1, -196619, 786433, 4, -196618, 851969, 2, -196617, 851969, 2, -196616, 851969, 2, -196615, 851969, 2, -196614, 851969, 2, -196613, 851969, 2, -196612, 851969, 2, -196611, 851969, 2, -196610, 851969, 2, -196609, 851969, 2, -262144, 851969, 2, -262143, 851969, 2, -262142, 851969, 2, -262141, 851969, 2, -262140, 851969, 2, -262139, 851969, 4, -262138, 851969, 1, -458773, 851969, 1, -458772, 851969, 1, -458771, 851969, 1, -458770, 851969, 1, -458769, 851969, 1, -458768, 851969, 1, -458767, 851969, 1, -458766, 851969, 1, -458765, 851969, 1, -458764, 851969, 1, -458763, 851969, 1, -458762, 851969, 1, -458761, 851969, 1, -458760, 851969, 1, -458759, 851969, 1, -458758, 851969, 1, -458757, 851969, 1, -458756, 851969, 1, -458755, 851969, 1, -458754, 851969, 1, -458753, 851969, 1, -524288, 851969, 1, -524287, 851969, 1, -524286, 851969, 1, -524285, 851969, 1, -524284, 851969, 1, -524283, 851969, 1, -524282, 851969, 1, -524281, 851969, 1, -524280, 851969, 1, -524279, 851969, 1, -524278, 851969, 1, -524277, 851969, 1, -524276, 851969, 1, -524275, 851969, 1, -524274, 851969, 1, -524273, 851969, 1, -524272, 851969, 1, -524271, 851969, 1, -524270, 851969, 1, -524269, 851969, 1, -524268, 851969, 1, -196599, 851969, 0, -196598, 851969, 0, -196597, 851969, 0, -196596, 851969, 0, -196595, 851969, 0, -196594, 851969, 0, -196593, 851969, 0, -196592, 851969, 0, -196591, 851969, 0, -196590, 851969, 0, -196602, 851969, 2, -196603, 786433, 2, -65549, 917505, 2, -65550, 851969, 2, -65551, 851969, 2, -65552, 851969, 2, -65553, 851969, 2, -65554, 851969, 2, -65555, 786433, 4, -131084, 851969, 2, -131083, 917505, 2, -65518, 786433, 2, -19, 917505, 2)
+[node name="TileMap" parent="gossip guru/Resetables" index="0"]
+layer_0/tile_data = PackedInt32Array(-393237, 851969, 1, -327701, 851969, 1, -262165, 851969, 1, -196629, 851969, 1, -131093, 851969, 1, -65557, 851969, 1, -21, 851969, 1, 65515, 851969, 1, 131051, 851969, 1, 196587, 851969, 1, 262123, 851969, 1, 327659, 851969, 1, 393195, 851969, 1, 458731, 851969, 1, 524267, 851969, 1, -393236, 851969, 1, -327700, 851969, 1, -262164, 851969, 1, -196628, 851969, 1, -131092, 851969, 1, -65556, 851969, 1, -20, 786433, 4, 65516, 917505, 1, 131052, 917505, 1, 196588, 917505, 1, 262124, 917505, 1, 327660, 917505, 1, 393196, 917505, 1, 458732, 786433, 5, 524268, 851969, 1, -393235, 851969, 1, -327699, 851969, 1, -262163, 851969, 1, -196627, 851969, 1, 458733, 851969, 0, 524269, 851969, 1, -393234, 851969, 1, -327698, 851969, 1, -262162, 851969, 1, -196626, 851969, 1, 458734, 851969, 0, 524270, 851969, 1, -393233, 851969, 1, -327697, 851969, 1, -262161, 851969, 1, -196625, 851969, 1, 458735, 851969, 0, 524271, 851969, 1, -393232, 851969, 1, -327696, 851969, 1, -262160, 851969, 1, -196624, 851969, 1, 458736, 851969, 0, 524272, 851969, 1, -393231, 851969, 1, -327695, 851969, 1, -262159, 851969, 1, -196623, 851969, 1, 458737, 851969, 0, 524273, 851969, 1, -393230, 851969, 1, -327694, 851969, 1, -262158, 851969, 1, -196622, 851969, 1, 458738, 851969, 0, 524274, 851969, 1, -393229, 851969, 1, -327693, 851969, 1, -262157, 851969, 1, -196621, 851969, 1, 458739, 851969, 0, 524275, 851969, 1, -393228, 851969, 1, -327692, 851969, 1, -262156, 851969, 1, 458740, 851969, 0, 524276, 851969, 1, -393227, 851969, 1, -327691, 851969, 1, -262155, 851969, 1, 458741, 851969, 0, 524277, 851969, 1, -393226, 851969, 1, -327690, 851969, 1, -262154, 851969, 1, 458742, 851969, 0, 524278, 851969, 1, -393225, 851969, 1, -327689, 851969, 1, -262153, 851969, 1, 458743, 851969, 0, 524279, 851969, 1, -393224, 851969, 1, -327688, 851969, 1, -262152, 851969, 1, 458744, 851969, 0, 524280, 851969, 1, -393223, 851969, 1, -327687, 851969, 1, -262151, 851969, 1, 458745, 851969, 0, 524281, 851969, 1, -393222, 851969, 1, -327686, 851969, 1, -262150, 851969, 1, 458746, 851969, 0, 524282, 851969, 1, -393221, 851969, 1, -327685, 851969, 1, -262149, 851969, 1, 458747, 851969, 0, 524283, 851969, 1, -393220, 851969, 1, -327684, 851969, 1, -262148, 851969, 1, 458748, 851969, 0, 524284, 851969, 1, -393219, 851969, 1, -327683, 851969, 1, -262147, 851969, 1, 458749, 851969, 0, 524285, 851969, 1, -393218, 851969, 1, -327682, 851969, 1, -262146, 851969, 1, 458750, 851969, 0, 524286, 851969, 1, -393217, 851969, 1, -327681, 851969, 1, -262145, 851969, 1, 458751, 851969, 0, 524287, 851969, 1, -458752, 851969, 1, -393216, 851969, 1, -327680, 851969, 1, 393216, 851969, 0, 458752, 851969, 1, -458751, 851969, 1, -393215, 851969, 1, -327679, 851969, 1, 393217, 851969, 0, 458753, 851969, 1, -458750, 851969, 1, -393214, 851969, 1, -327678, 851969, 1, 393218, 851969, 0, 458754, 851969, 1, -458749, 851969, 1, -393213, 851969, 1, -327677, 851969, 1, 393219, 851969, 0, 458755, 851969, 1, -458748, 851969, 1, -393212, 851969, 1, -327676, 851969, 1, 393220, 851969, 0, 458756, 851969, 1, -458747, 851969, 1, -393211, 851969, 1, -327675, 851969, 1, 393221, 851969, 0, 458757, 851969, 1, -458746, 851969, 1, -393210, 851969, 1, -327674, 851969, 1, 393222, 851969, 0, 458758, 851969, 1, -458745, 851969, 1, -393209, 851969, 1, -327673, 851969, 1, -262137, 851969, 1, -196601, 851969, 4, -131065, 786433, 2, 393223, 851969, 0, 458759, 851969, 1, -458744, 786433, 4, -393208, 917505, 1, -327672, 917505, 1, -262136, 917505, 1, -196600, 786433, 5, -131064, 851969, 2, 393224, 851969, 0, 458760, 851969, 1, -458743, 851969, 2, -131063, 851969, 2, 393225, 851969, 0, 458761, 851969, 1, -458742, 851969, 2, -131062, 851969, 2, 393226, 851969, 0, 458762, 851969, 1, -458741, 851969, 2, -131061, 851969, 2, 393227, 851969, 0, 458763, 851969, 1, -458740, 851969, 2, -131060, 851969, 2, 393228, 851969, 0, 458764, 851969, 1, -458739, 851969, 2, -131059, 851969, 2, 393229, 851969, 0, 458765, 851969, 1, -458738, 851969, 2, -131058, 851969, 2, 393230, 851969, 0, 458766, 851969, 1, -458737, 851969, 2, -131057, 851969, 2, 393231, 851969, 0, 458767, 851969, 1, -458736, 851969, 2, -131056, 851969, 2, 393232, 851969, 0, 458768, 851969, 1, -458735, 851969, 2, -131055, 851969, 2, 393233, 851969, 0, 458769, 851969, 1, -458734, 851969, 2, -131054, 851969, 4, 393234, 851969, 0, 458770, 851969, 1, -458733, 851969, 4, -393197, 786433, 1, -327661, 786433, 1, -262125, 786433, 1, -196589, 851969, 5, -131053, 851969, 1, -65517, 851969, 4, 19, 786433, 1, 65555, 786433, 1, 131091, 786433, 1, 196627, 786433, 1, 262163, 786433, 1, 327699, 786433, 1, 393235, 851969, 5, 458771, 851969, 1, -458732, 851969, 1, -393196, 851969, 1, -327660, 851969, 1, -262124, 851969, 1, -196588, 851969, 1, -131052, 851969, 1, -65516, 851969, 1, 20, 851969, 1, 65556, 851969, 1, 131092, 851969, 1, 196628, 851969, 1, 262164, 851969, 1, 327700, 851969, 1, 393236, 851969, 1, 458772, 851969, 1, -131091, 851969, 1, -131090, 851969, 1, -131089, 851969, 1, -131088, 851969, 1, -131087, 851969, 1, -131086, 851969, 1, -131085, 786433, 4, -196620, 851969, 1, -196619, 786433, 4, -196618, 851969, 2, -196617, 851969, 2, -196616, 851969, 2, -196615, 851969, 2, -196614, 851969, 2, -196613, 851969, 2, -196612, 851969, 2, -196611, 851969, 2, -196610, 851969, 2, -196609, 851969, 2, -262144, 851969, 2, -262143, 851969, 2, -262142, 851969, 2, -262141, 851969, 2, -262140, 851969, 2, -262139, 851969, 4, -262138, 851969, 1, -458773, 851969, 1, -458772, 851969, 1, -458771, 851969, 1, -458770, 851969, 1, -458769, 851969, 1, -458768, 851969, 1, -458767, 851969, 1, -458766, 851969, 1, -458765, 851969, 1, -458764, 851969, 1, -458763, 851969, 1, -458762, 851969, 1, -458761, 851969, 1, -458760, 851969, 1, -458759, 851969, 1, -458758, 851969, 1, -458757, 851969, 1, -458756, 851969, 1, -458755, 851969, 1, -458754, 851969, 1, -458753, 851969, 1, -524288, 851969, 1, -524287, 851969, 1, -524286, 851969, 1, -524285, 851969, 1, -524284, 851969, 1, -524283, 851969, 1, -524282, 851969, 1, -524281, 851969, 1, -524280, 851969, 1, -524279, 851969, 1, -524278, 851969, 1, -524277, 851969, 1, -524276, 851969, 1, -524275, 851969, 1, -524274, 851969, 1, -524273, 851969, 1, -524272, 851969, 1, -524271, 851969, 1, -524270, 851969, 1, -524269, 851969, 1, -524268, 851969, 1, -196599, 851969, 0, -196598, 851969, 0, -196597, 851969, 0, -196596, 851969, 0, -196595, 851969, 0, -196594, 851969, 0, -196593, 851969, 0, -196592, 851969, 0, -196591, 851969, 0, -196590, 851969, 0, -196602, 851969, 2, -196603, 786433, 2, -65549, 917505, 2, -65550, 851969, 2, -65551, 851969, 2, -65552, 851969, 2, -65553, 851969, 2, -65554, 851969, 2, -65555, 786433, 4, -131084, 851969, 2, -131083, 917505, 2, -65518, 786433, 2, -19, 917505, 2, 65517, 917505, 5, -131082, 917505, 5, -393207, 917505, 5, -393198, 983041, 5, -65519, 983041, 5, -131066, 983041, 5)
 layer_5/tile_data = PackedInt32Array(-262164, 589825, 4, -196628, 589825, 4, -131092, 589825, 4, -65556, 589825, 4, -20, 589825, 4, 65516, 589825, 4, 131052, 589825, 4, 196588, 589825, 4, 262124, 589825, 4, 327660, 589825, 4, 393196, 589825, 4, -262163, 589825, 4, -196627, 589825, 4, -131091, 589825, 4, -65555, 589825, 4, -19, 589825, 4, 65517, 589825, 4, 131053, 589825, 4, 196589, 589825, 4, 262125, 589825, 4, 327661, 589825, 4, 393197, 589825, 4, -262162, 589825, 4, -196626, 589825, 4, -131090, 589825, 4, -65554, 589825, 4, -18, 589825, 4, 65518, 589825, 4, 131054, 589825, 4, 196590, 589825, 4, 262126, 589825, 4, 327662, 589825, 4, 393198, 589825, 4, -262161, 589825, 4, -196625, 589825, 4, -131089, 589825, 4, -65553, 589825, 4, -17, 589825, 4, 65519, 589825, 4, 131055, 589825, 4, 196591, 589825, 4, 262127, 589825, 4, 327663, 589825, 4, 393199, 589825, 4, -262160, 589825, 4, -196624, 589825, 4, -131088, 589825, 4, -65552, 589825, 4, -16, 589825, 4, 65520, 589825, 4, 131056, 589825, 4, 196592, 589825, 4, 262128, 589825, 4, 327664, 589825, 4, 393200, 589825, 4, -262159, 589825, 4, -196623, 589825, 4, -131087, 589825, 4, -65551, 589825, 4, -15, 589825, 4, 65521, 589825, 4, 131057, 589825, 4, 196593, 589825, 4, 262129, 589825, 4, 327665, 589825, 4, 393201, 589825, 4, -262158, 589825, 4, -196622, 589825, 4, -131086, 589825, 4, -65550, 589825, 4, -14, 589825, 4, 65522, 589825, 4, 131058, 589825, 4, 196594, 589825, 4, 262130, 589825, 4, 327666, 589825, 4, 393202, 589825, 4, -262157, 589825, 4, -196621, 589825, 4, -131085, 589825, 4, -65549, 589825, 4, -13, 589825, 4, 65523, 589825, 4, 131059, 589825, 4, 196595, 589825, 4, 262131, 589825, 4, 327667, 589825, 4, 393203, 589825, 4, -262156, 589825, 4, -196620, 589825, 4, -131084, 589825, 4, -65548, 589825, 4, -12, 589825, 4, 65524, 589825, 4, 131060, 589825, 4, 196596, 589825, 4, 262132, 589825, 4, 327668, 589825, 4, 393204, 589825, 4, -262155, 589825, 4, -196619, 589825, 4, -131083, 589825, 4, -65547, 589825, 4, -11, 589825, 4, 65525, 589825, 4, 131061, 589825, 4, 196597, 589825, 4, 262133, 589825, 4, 327669, 589825, 4, 393205, 589825, 4, -262154, 589825, 4, -196618, 589825, 4, -131082, 589825, 4, -65546, 589825, 4, -10, 589825, 4, 65526, 589825, 4, 131062, 589825, 4, 196598, 589825, 4, 262134, 589825, 4, 327670, 589825, 4, 393206, 589825, 4, -262153, 589825, 4, -196617, 589825, 4, -131081, 589825, 4, -65545, 589825, 4, -9, 589825, 4, 65527, 589825, 4, 131063, 589825, 4, 196599, 589825, 4, 262135, 589825, 4, 327671, 589825, 4, 393207, 589825, 4, -262152, 589825, 4, -196616, 589825, 4, -131080, 589825, 4, -65544, 589825, 4, -8, 589825, 4, 65528, 589825, 4, 131064, 589825, 4, 196600, 589825, 4, 262136, 589825, 4, 327672, 589825, 4, 393208, 589825, 4, -262151, 589825, 4, -196615, 589825, 4, -131079, 589825, 4, -65543, 589825, 4, -7, 589825, 4, 65529, 589825, 4, 131065, 589825, 4, 196601, 589825, 4, 262137, 589825, 4, 327673, 589825, 4, 393209, 589825, 4, -262150, 589825, 4, -196614, 589825, 4, -131078, 589825, 4, -65542, 589825, 4, -6, 589825, 4, 65530, 589825, 4, 131066, 589825, 4, 196602, 589825, 4, 262138, 589825, 4, 327674, 589825, 4, 393210, 589825, 4, -262149, 589825, 4, -196613, 589825, 4, -131077, 589825, 4, -65541, 589825, 4, -5, 589825, 4, 65531, 589825, 4, 131067, 589825, 4, 196603, 589825, 4, 262139, 589825, 4, 327675, 589825, 4, 393211, 589825, 4, -262148, 589825, 4, -196612, 589825, 4, -131076, 589825, 4, -65540, 589825, 4, -4, 589825, 4, 65532, 589825, 4, 131068, 589825, 4, 196604, 589825, 4, 262140, 589825, 4, 327676, 589825, 4, 393212, 589825, 4, -262147, 589825, 4, -196611, 589825, 4, -131075, 589825, 4, -65539, 589825, 4, -3, 589825, 4, 65533, 589825, 4, 131069, 589825, 4, 196605, 589825, 4, 262141, 589825, 4, 327677, 589825, 4, 393213, 589825, 4, -262146, 589825, 4, -196610, 589825, 4, -131074, 589825, 4, -65538, 589825, 4, -2, 589825, 4, 65534, 589825, 4, 131070, 589825, 4, 196606, 589825, 4, 262142, 589825, 4, 327678, 589825, 4, 393214, 589825, 4, -262145, 589825, 4, -196609, 589825, 4, -131073, 589825, 4, -65537, 589825, 4, -1, 589825, 4, 65535, 589825, 4, 131071, 589825, 4, 196607, 589825, 4, 262143, 589825, 4, 327679, 589825, 4, 393215, 589825, 4, -327680, 589825, 4, -262144, 589825, 4, -196608, 589825, 4, -131072, 589825, 4, -65536, 589825, 4, 0, 589825, 4, 65536, 589825, 4, 131072, 589825, 4, 196608, 589825, 4, 262144, 589825, 4, 327680, 589825, 4, -327679, 589825, 4, -262143, 589825, 4, -196607, 589825, 4, -131071, 589825, 4, -65535, 589825, 4, 1, 589825, 4, 65537, 589825, 4, 131073, 589825, 4, 196609, 589825, 4, 262145, 589825, 4, 327681, 589825, 4, -327678, 589825, 4, -262142, 589825, 4, -196606, 589825, 4, -131070, 589825, 4, -65534, 589825, 4, 2, 589825, 4, 65538, 589825, 4, 131074, 589825, 4, 196610, 589825, 4, 262146, 589825, 4, 327682, 589825, 4, -327677, 589825, 4, -262141, 589825, 4, -196605, 589825, 4, -131069, 589825, 4, -65533, 589825, 4, 3, 589825, 4, 65539, 589825, 4, 131075, 589825, 4, 196611, 589825, 4, 262147, 589825, 4, 327683, 589825, 4, -327676, 589825, 4, -262140, 589825, 4, -196604, 589825, 4, -131068, 589825, 4, -65532, 589825, 4, 4, 589825, 4, 65540, 589825, 4, 131076, 589825, 4, 196612, 589825, 4, 262148, 589825, 4, 327684, 589825, 4, -327675, 589825, 4, -262139, 589825, 4, -196603, 589825, 4, -131067, 589825, 4, -65531, 589825, 4, 5, 589825, 4, 65541, 589825, 4, 131077, 589825, 4, 196613, 589825, 4, 262149, 589825, 4, 327685, 589825, 4, -327674, 589825, 4, -262138, 589825, 4, -196602, 589825, 4, -131066, 589825, 4, -65530, 589825, 4, 6, 589825, 4, 65542, 589825, 4, 131078, 589825, 4, 196614, 589825, 4, 262150, 589825, 4, 327686, 589825, 4, -327673, 589825, 4, -262137, 589825, 4, -196601, 589825, 4, -131065, 589825, 4, -65529, 589825, 4, 7, 589825, 4, 65543, 589825, 4, 131079, 589825, 4, 196615, 589825, 4, 262151, 589825, 4, 327687, 589825, 4, -327672, 589825, 4, -262136, 589825, 4, -196600, 589825, 4, -131064, 589825, 4, -65528, 589825, 4, 8, 589825, 4, 65544, 589825, 4, 131080, 589825, 4, 196616, 589825, 4, 262152, 589825, 4, 327688, 589825, 4, -327671, 589825, 4, -262135, 589825, 4, -196599, 589825, 4, -131063, 589825, 4, -65527, 589825, 4, 9, 589825, 4, 65545, 589825, 4, 131081, 589825, 4, 196617, 589825, 4, 262153, 589825, 4, 327689, 589825, 4, -327670, 589825, 4, -262134, 589825, 4, -196598, 589825, 4, -131062, 589825, 4, -65526, 589825, 4, 10, 589825, 4, 65546, 589825, 4, 131082, 589825, 4, 196618, 589825, 4, 262154, 589825, 4, 327690, 589825, 4, -327669, 589825, 4, -262133, 589825, 4, -196597, 589825, 4, -131061, 589825, 4, -65525, 589825, 4, 11, 589825, 4, 65547, 589825, 4, 131083, 589825, 4, 196619, 589825, 4, 262155, 589825, 4, 327691, 589825, 4, -327668, 589825, 4, -262132, 589825, 4, -196596, 589825, 4, -131060, 589825, 4, -65524, 589825, 4, 12, 589825, 4, 65548, 589825, 4, 131084, 589825, 4, 196620, 589825, 4, 262156, 589825, 4, 327692, 589825, 4, -327667, 589825, 4, -262131, 589825, 4, -196595, 589825, 4, -131059, 589825, 4, -65523, 589825, 4, 13, 589825, 4, 65549, 589825, 4, 131085, 589825, 4, 196621, 589825, 4, 262157, 589825, 4, 327693, 589825, 4, -327666, 589825, 4, -262130, 589825, 4, -196594, 589825, 4, -131058, 589825, 4, -65522, 589825, 4, 14, 589825, 4, 65550, 589825, 4, 131086, 589825, 4, 196622, 589825, 4, 262158, 589825, 4, 327694, 589825, 4, -327665, 589825, 4, -262129, 589825, 4, -196593, 589825, 4, -131057, 589825, 4, -65521, 589825, 4, 15, 589825, 4, 65551, 589825, 4, 131087, 589825, 4, 196623, 589825, 4, 262159, 589825, 4, 327695, 589825, 4, -327664, 589825, 4, -262128, 589825, 4, -196592, 589825, 4, -131056, 589825, 4, -65520, 589825, 4, 16, 589825, 4, 65552, 589825, 4, 131088, 589825, 4, 196624, 589825, 4, 262160, 589825, 4, 327696, 589825, 4, -327663, 589825, 4, -262127, 589825, 4, -196591, 589825, 4, -131055, 589825, 4, -65519, 589825, 4, 17, 589825, 4, 65553, 589825, 4, 131089, 589825, 4, 196625, 589825, 4, 262161, 589825, 4, 327697, 589825, 4, -327662, 589825, 4, -262126, 589825, 4, -196590, 589825, 4, -131054, 589825, 4, -65518, 589825, 4, 18, 589825, 4, 65554, 589825, 4, 131090, 589825, 4, 196626, 589825, 4, 262162, 589825, 4, 327698, 589825, 4, -327661, 589825, 4, -262125, 589825, 4, -196589, 589825, 4, -131053, 589825, 4, -65517, 589825, 4, 19, 589825, 4, 65555, 589825, 4, 131091, 589825, 4, 196627, 589825, 4, 262163, 589825, 4, 327699, 589825, 4, -393207, 589825, 4, -393206, 589825, 4, -393205, 589825, 4, -393204, 589825, 4, -393203, 589825, 4, -393202, 589825, 4, -393201, 589825, 4, -393200, 589825, 4, -393199, 589825, 4, -393198, 589825, 4)
 
-[node name="ColorRect" type="ColorRect" parent="Room4/Resetables" index="1"]
+[node name="ColorRect" type="ColorRect" parent="gossip guru/Resetables" index="1"]
 z_index = -2
 offset_left = -160.0
 offset_top = -56.0
@@ -2557,58 +2611,323 @@ offset_bottom = 56.0
 color = Color(0, 0, 0, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="fakegloblin" parent="Room4/Resetables" index="2" instance=ExtResource("8_54cur")]
+[node name="fakegloblin" parent="gossip guru/Resetables" index="2" instance=ExtResource("8_54cur")]
 position = Vector2(-137, 41)
+JUMP_VELOCITY = -130.0
+gravity = 300
 
-[node name="Sprite2D" parent="Room4/Resetables/fakegloblin" index="0"]
+[node name="Sprite2D" parent="gossip guru/Resetables/fakegloblin" index="0"]
 visible = false
 
-[node name="RxHitbox" parent="Room4/Resetables/fakegloblin" index="2"]
+[node name="RxHitbox" parent="gossip guru/Resetables/fakegloblin" index="2"]
 monitorable = false
 
-[node name="TxHitbox" parent="Room4/Resetables/fakegloblin" index="3"]
+[node name="TxHitbox" parent="gossip guru/Resetables/fakegloblin" index="3"]
 monitoring = false
 
-[node name="NPC" parent="Room4/Resetables/fakegloblin" instance=ExtResource("12_5073p")]
+[node name="JumpTimer" parent="gossip guru/Resetables/fakegloblin" index="4"]
+wait_time = 0.2
+
+[node name="NPC" parent="gossip guru/Resetables/fakegloblin" instance=ExtResource("12_5073p")]
 position = Vector2(0, -1)
 texture = ExtResource("70_83wb5")
 flip_h = true
 
-[node name="Dialogue" parent="Room4/Resetables/fakegloblin/NPC" index="1"]
+[node name="Dialogue" parent="gossip guru/Resetables/fakegloblin/NPC" index="1"]
 dialogue = Array[String](["hooohoooweeehooo ha"])
 
-[node name="Dialogue2" type="Node" parent="Room4/Resetables/fakegloblin/NPC"]
+[node name="Dialogue2" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
 script = ExtResource("13_lj3s4")
 is_player = true
 dialogue = Array[String](["..Hello?"])
 
-[node name="Dialogue3" type="Node" parent="Room4/Resetables/fakegloblin/NPC"]
+[node name="Dialogue3" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
 script = ExtResource("13_lj3s4")
-dialogue = Array[String](["hoowahoo ha", "!!!!!", "sorry I just got so excited thinking about gossip", "sometimes i just can't restrain myself y'know"])
+dialogue = Array[String](["hoowahoo ha", "!!!!!", "sorry i just got so excited thinking about gossip", "sometimes i just can't restrain myself y'know"])
 
-[node name="Dialogue4" type="Node" parent="Room4/Resetables/fakegloblin/NPC"]
+[node name="Dialogue4" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
 script = ExtResource("13_lj3s4")
 is_player = true
 dialogue = Array[String](["..Sure.", "What kind of gossip do you have?"])
 
-[node name="Dialogue5" type="Node" parent="Room4/Resetables/fakegloblin/NPC"]
+[node name="Dialogue5" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
 script = ExtResource("13_lj3s4")
 dialogue = Array[String](["hoowa... what kind of gossip don't I have?", "they say some journalist lady fell from a hole in the sky hooha"])
 
-[node name="Dialogue6" type="Node" parent="Room4/Resetables/fakegloblin/NPC"]
+[node name="Dialogue6" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
 script = ExtResource("13_lj3s4")
 is_player = true
-dialogue = Array[String](["Yes that would be me. As a journalist it is my duty to collect gossip.11"])
+dialogue = Array[String](["Yes that would be me.", "As a journalist it is my duty to collect gossip. If you could share anything else, it'd be much appreciated."])
 
-[node name="Entranceverysecret" parent="Room4" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
+[node name="Dialogue7" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
+script = ExtResource("13_lj3s4")
+dialogue = Array[String](["a collector, eh? hoohahee i like you funny sky lady", "how bout this? bring me 30 pieces of gossip and I shall give you a KEY to the ultimate gossip!!!! hooha"])
+
+[node name="Dialogue8" type="Node" parent="gossip guru/Resetables/fakegloblin/NPC"]
+script = ExtResource("13_lj3s4")
+is_player = true
+dialogue = Array[String](["Deal."])
+
+[node name="Sprite2D" type="Sprite2D" parent="gossip guru/Resetables" index="3"]
+z_index = -1
+position = Vector2(-80.0422, 40.4393)
+texture = ExtResource("25_768hp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="gossip guru/Resetables" index="4"]
+z_index = -1
+position = Vector2(-55, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D4" type="Sprite2D" parent="gossip guru/Resetables" index="5"]
+z_index = -1
+position = Vector2(-61, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D5" type="Sprite2D" parent="gossip guru/Resetables" index="6"]
+z_index = -1
+position = Vector2(125, -26)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D6" type="Sprite2D" parent="gossip guru/Resetables" index="7"]
+z_index = -1
+position = Vector2(128, -27)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D7" type="Sprite2D" parent="gossip guru/Resetables" index="8"]
+z_index = -1
+position = Vector2(129, -25)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D8" type="Sprite2D" parent="gossip guru/Resetables" index="9"]
+z_index = -1
+position = Vector2(139, -26)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D9" type="Sprite2D" parent="gossip guru/Resetables" index="10"]
+z_index = -1
+position = Vector2(146, -26)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D10" type="Sprite2D" parent="gossip guru/Resetables" index="11"]
+z_index = -1
+position = Vector2(149, -30)
+texture = ExtResource("62_exifk")
+
+[node name="Sprite2D11" type="Sprite2D" parent="gossip guru/Resetables" index="12"]
+z_index = -1
+position = Vector2(115, -30)
+texture = ExtResource("62_exifk")
+flip_h = true
+
+[node name="Sprite2D12" type="Sprite2D" parent="gossip guru/Resetables" index="13"]
+z_index = -1
+position = Vector2(106, -30)
+texture = ExtResource("63_kpa06")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="gossip guru/Resetables" index="14"]
+z_index = -1
+position = Vector2(-117, 36)
+texture = ExtResource("26_scsjf")
+centered = false
+
+[node name="Sprite2D13" type="Sprite2D" parent="gossip guru/Resetables" index="15"]
+z_index = -1
+position = Vector2(-133, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D14" type="Sprite2D" parent="gossip guru/Resetables" index="16"]
+z_index = -1
+position = Vector2(-129, 47)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D15" type="Sprite2D" parent="gossip guru/Resetables" index="17"]
+z_index = -1
+position = Vector2(-119, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D16" type="Sprite2D" parent="gossip guru/Resetables" index="18"]
+z_index = -1
+position = Vector2(-109, 42)
+texture = ExtResource("62_exifk")
+
+[node name="Sprite2D17" type="Sprite2D" parent="gossip guru/Resetables" index="19"]
+z_index = -1
+position = Vector2(-143, 42)
+texture = ExtResource("62_exifk")
+flip_h = true
+
+[node name="Sprite2D18" type="Sprite2D" parent="gossip guru/Resetables" index="20"]
+z_index = -1
+position = Vector2(-152, 42)
+texture = ExtResource("63_kpa06")
+flip_h = true
+
+[node name="Sprite2D19" type="Sprite2D" parent="gossip guru/Resetables" index="21"]
+z_index = -1
+position = Vector2(8, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D20" type="Sprite2D" parent="gossip guru/Resetables" index="22"]
+z_index = -1
+position = Vector2(12, 47)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D21" type="Sprite2D" parent="gossip guru/Resetables" index="23"]
+z_index = -1
+position = Vector2(22, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D22" type="Sprite2D" parent="gossip guru/Resetables" index="24"]
+z_index = -1
+position = Vector2(32, 42)
+texture = ExtResource("62_exifk")
+
+[node name="Sprite2D23" type="Sprite2D" parent="gossip guru/Resetables" index="25"]
+z_index = -1
+position = Vector2(-2, 42)
+texture = ExtResource("62_exifk")
+flip_h = true
+
+[node name="Sprite2D24" type="Sprite2D" parent="gossip guru/Resetables" index="26"]
+z_index = -1
+position = Vector2(-11, 42)
+texture = ExtResource("63_kpa06")
+flip_h = true
+
+[node name="Sprite2D42" type="Sprite2D" parent="gossip guru/Resetables" index="27"]
+z_index = -1
+position = Vector2(61, 35)
+texture = ExtResource("62_exifk")
+flip_h = true
+
+[node name="Sprite2D43" type="Sprite2D" parent="gossip guru/Resetables" index="28"]
+z_index = -1
+position = Vector2(52, 35)
+texture = ExtResource("63_kpa06")
+flip_h = true
+
+[node name="Sprite2D25" type="Sprite2D" parent="gossip guru/Resetables" index="29"]
+z_index = -1
+position = Vector2(127, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D26" type="Sprite2D" parent="gossip guru/Resetables" index="30"]
+z_index = -1
+position = Vector2(131, 47)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D27" type="Sprite2D" parent="gossip guru/Resetables" index="31"]
+z_index = -1
+position = Vector2(141, 46)
+texture = ExtResource("67_ajacy")
+
+[node name="Sprite2D28" type="Sprite2D" parent="gossip guru/Resetables" index="32"]
+z_index = -1
+position = Vector2(151, 42)
+texture = ExtResource("62_exifk")
+
+[node name="Sprite2D29" type="Sprite2D" parent="gossip guru/Resetables" index="33"]
+z_index = -1
+position = Vector2(117, 42)
+texture = ExtResource("62_exifk")
+flip_h = true
+
+[node name="Sprite2D30" type="Sprite2D" parent="gossip guru/Resetables" index="34"]
+z_index = -1
+position = Vector2(108, 42)
+texture = ExtResource("63_kpa06")
+flip_h = true
+
+[node name="Sprite2D31" type="Sprite2D" parent="gossip guru/Resetables" index="35"]
+z_index = -1
+position = Vector2(-56, 4)
+texture = ExtResource("64_w5de3")
+centered = false
+
+[node name="Sprite2D32" type="Sprite2D" parent="gossip guru/Resetables" index="36"]
+z_index = -1
+position = Vector2(7, 2)
+texture = ExtResource("65_1yeyo")
+centered = false
+
+[node name="Sprite2D33" type="Sprite2D" parent="gossip guru/Resetables" index="37"]
+z_index = -1
+position = Vector2(26, 18)
+texture = ExtResource("65_1yeyo")
+centered = false
+
+[node name="Sprite2D34" type="Sprite2D" parent="gossip guru/Resetables" index="38"]
+z_index = -1
+position = Vector2(140, 13)
+texture = ExtResource("65_1yeyo")
+centered = false
+
+[node name="Sprite2D35" type="Sprite2D" parent="gossip guru/Resetables" index="39"]
+z_index = -1
+position = Vector2(129, 1)
+texture = ExtResource("65_1yeyo")
+centered = false
+
+[node name="Sprite2D36" type="Sprite2D" parent="gossip guru/Resetables" index="40"]
+z_index = -1
+position = Vector2(130, 10)
+texture = ExtResource("66_pkipw")
+centered = false
+
+[node name="Sprite2D37" type="Sprite2D" parent="gossip guru/Resetables" index="41"]
+z_index = -1
+position = Vector2(34, 12)
+texture = ExtResource("66_pkipw")
+centered = false
+
+[node name="Sprite2D38" type="Sprite2D" parent="gossip guru/Resetables" index="42"]
+z_index = -1
+position = Vector2(14, 9)
+texture = ExtResource("66_pkipw")
+centered = false
+
+[node name="Sprite2D39" type="Sprite2D" parent="gossip guru/Resetables" index="43"]
+z_index = -1
+position = Vector2(-111, 19)
+texture = ExtResource("66_pkipw")
+centered = false
+
+[node name="Sprite2D44" type="Sprite2D" parent="gossip guru/Resetables" index="44"]
+z_index = -1
+position = Vector2(-128, 44)
+texture = ExtResource("67_2s62m")
+centered = false
+flip_h = true
+
+[node name="Sprite2D45" type="Sprite2D" parent="gossip guru/Resetables" index="45"]
+z_index = -1
+position = Vector2(38, 44)
+texture = ExtResource("67_2s62m")
+centered = false
+flip_h = true
+
+[node name="Sprite2D40" type="Sprite2D" parent="gossip guru/Resetables" index="46"]
+z_index = -1
+position = Vector2(-119, 25)
+texture = ExtResource("66_pkipw")
+centered = false
+
+[node name="Sprite2D41" type="Sprite2D" parent="gossip guru/Resetables" index="47"]
+z_index = -1
+position = Vector2(42, 36)
+texture = ExtResource("62_boiag")
+centered = false
+
+[node name="Entranceverysecret" parent="gossip guru" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
 position = Vector2(90.6245, -23.3044)
 target = NodePath("../../puddle moat/Entranceverysecret")
 
-[node name="Entrancewidehouse" parent="Room4" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
+[node name="Entrancewidehouse" parent="gossip guru" node_paths=PackedStringArray("target") instance=ExtResource("21_fgcip")]
 position = Vector2(91, 49)
 target = NodePath("../../puddle moat/Entrancewidehouse")
 
-[node name="Gossip" parent="Room4" instance=ExtResource("41_v0qih")]
+[node name="Gossip" parent="gossip guru" instance=ExtResource("41_v0qih")]
 position = Vector2(136, -33)
 
 [node name="HQ" parent="." instance=ExtResource("12_ngnwq")]
@@ -2879,7 +3198,27 @@ target = NodePath("../../HQ/Entranceexit")
 [node name="dir" parent="should have known/Entranceexit/Interactable" index="1"]
 position = Vector2(0, -26)
 
+[node name="NPC" parent="should have known" instance=ExtResource("12_5073p")]
+position = Vector2(-62, 8)
+
+[node name="Interactable" parent="should have known/NPC" index="0"]
+monitoring = false
+monitorable = false
+
+[node name="Dialogue" parent="should have known/NPC" index="1"]
+is_player = true
+dialogue = Array[String](["!!!"])
+
+[node name="Area2D" type="Area2D" parent="should have known/NPC"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="should have known/NPC/Area2D"]
+position = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_kfo5j")
+
 [connection signal="interact" from="backest room/PogoItem/Interactable" to="backest room/PogoItem" method="_on_interactable_interact"]
+[connection signal="body_entered" from="should have known/NPC/Area2D" to="should have known/NPC" method="_on_area_2d_body_entered"]
 
 [editable path="Time to explore"]
 [editable path="Time to explore/Resetables/NPC"]
@@ -3001,9 +3340,11 @@ position = Vector2(0, -26)
 [editable path="pendre town/Resetables/croc/Interactable"]
 [editable path="pendre town/Resetables/NPC3"]
 [editable path="Croc house"]
-[editable path="Room4"]
-[editable path="Room4/Resetables/fakegloblin"]
-[editable path="Room4/Resetables/fakegloblin/NPC"]
+[editable path="Croc house/Resetables/NPC"]
+[editable path="Croc house/Resetables/NPC2"]
+[editable path="gossip guru"]
+[editable path="gossip guru/Resetables/fakegloblin"]
+[editable path="gossip guru/Resetables/fakegloblin/NPC"]
 [editable path="HQ"]
 [editable path="HQ/NPC"]
 [editable path="HQ/NPC/Interactable"]
@@ -3017,3 +3358,4 @@ position = Vector2(0, -26)
 [editable path="should have known"]
 [editable path="should have known/Entranceexit"]
 [editable path="should have known/Entranceexit/Interactable"]
+[editable path="should have known/NPC"]
