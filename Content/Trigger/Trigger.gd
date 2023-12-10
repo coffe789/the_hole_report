@@ -114,7 +114,7 @@ func _draw():
 func on_enter():
 	pass
 
-
+# Called every frame you are standing inside the trigger
 func activate():
 	pass
 

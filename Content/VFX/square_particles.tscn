@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgr61ixn303v7"]
+
+[ext_resource type="Texture2D" uid="uid://cmwqayt3r6mdk" path="res://Art/square_particle.png" id="1_ca644"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrfhx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(112, 10, 1)
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -1, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+modulate = Color(0.19, 0.139397, 0.0114, 1)
+position = Vector2(119, 120)
+amount = 14
+process_material = SubResource("ParticleProcessMaterial_mrfhx")
+texture = ExtResource("1_ca644")
+lifetime = 10.0
+preprocess = 10.0

@@ -5,7 +5,7 @@ const INPUT_ACCEL = 30.0 * 60.0
 const JUMP_SPEED = -150.0
 var max_speed = Vector2(75, 200)
 var gravity = 400
-var has_pogo = false
+@export var has_pogo = false
 
 var accel = Vector2.ZERO
 var is_attacking = false
@@ -31,8 +31,9 @@ func move(delta):
 	
 	move_and_slide()
 	
-	if position.x - int(position.x) == 0.5:
-		position.x += 0.01
+	var dec = position.x - floor(position.x)
+	if  dec > 0.499 && dec < 0.501:
+		position.x += 0.015
 	
 	if Input.is_action_just_pressed("ui_down") and is_on_floor()\
 	 and !$FallthruDetectL.is_colliding() and !$FallthruDetectR.is_colliding():
@@ -109,3 +110,13 @@ func _on_water_finder_body_exited(_body):
 func _on_tx_hitbox_target_found(target):
 	if not target.is_in_group("player_rxbox") and not target.get_parent().is_in_group("projectile"):
 		velocity.x = -sign($Sprite2D.scale.x) * 150
+
+# The water finder is also finding shrooms now...
+func _on_water_finder_area_entered(area):
+	if area.is_in_group("shroom"):
+		if $SM.current_state.name != "Pogo":
+			if Input.is_action_pressed("jump"):
+				velocity.y = -120
+			else: 
+				velocity.y = -70
+			
