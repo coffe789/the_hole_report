@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://wygg1j00cpf1"]
+
+[ext_resource type="Script" path="res://Content/LevelElement/side_shroom.gd" id="1_kyru8"]
+[ext_resource type="Texture2D" uid="uid://duygsn8ao5cya" path="res://Art/side_shroom.png" id="2_2gi5w"]
+[ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="2_yj4bi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enk3m"]
+size = Vector2(13, 8.75)
+
+[node name="SideShroom" type="Area2D"]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_kyru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_enk3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7, -9)
+texture = ExtResource("2_2gi5w")
+centered = false
+
+[node name="RxHitbox" parent="." instance=ExtResource("2_yj4bi")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RxHitbox"]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_enk3m")

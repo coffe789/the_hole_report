@@ -44,6 +44,11 @@ func _on_pogo_tx_hitbox_body_entered(body):
 
 func _on_pogo_tx_hitbox_area_entered(area):
 	if area.is_in_group("shroom_box"):
-		target.velocity.y = -180
-	
+		target.velocity.y = -200
+	if area.is_in_group("shroom_box_l"):
+		target.velocity.y = -200
+		target.velocity.x -= 100
+	if area.is_in_group("shroom_box_r"):
+		target.velocity.y = -200
+		target.velocity.x += 100
 	_on_pogo_tx_hitbox_body_entered(null)

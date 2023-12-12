@@ -297,6 +297,9 @@ hit_from_inside = true
 emitting = false
 randomness = 0.0
 
+[node name="ShroomBounceTimer" type="Timer" parent="."]
+wait_time = 0.6
+
 [connection signal="damage_received" from="RxHitbox" to="." method="_on_rx_hitbox_damage_received"]
 [connection signal="body_entered" from="TxHitbox" to="TxHitbox" method="_on_body_entered"]
 [connection signal="target_found" from="TxHitbox" to="." method="_on_tx_hitbox_target_found"]
@@ -306,3 +309,4 @@ randomness = 0.0
 [connection signal="body_entered" from="WaterFinder" to="." method="_on_water_finder_body_entered"]
 [connection signal="body_exited" from="WaterFinder" to="." method="_on_water_finder_body_exited"]
 [connection signal="body_entered" from="SpikeDetect" to="." method="_on_spike_detect_body_entered"]
+[connection signal="timeout" from="ShroomBounceTimer" to="." method="_on_shroom_bounce_timer_timeout"]

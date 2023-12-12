@@ -9,6 +9,7 @@ var gravity = 400
 
 var accel = Vector2.ZERO
 var is_attacking = false
+var bounce_dir = 0 # -1, 0, 1
 @export var hp = MAX_HP : set=set_health
 var has_jump_ended = false
 
@@ -18,15 +19,22 @@ func _ready():
 
 func move(delta):
 	var dir = Input.get_axis("ui_left", "ui_right")
-	if !is_on_floor(): dir *= pow(modulate.a, 2) # Less control when taking damage
+	if bounce_dir:
+		if bounce_dir != dir: dir *= 0.4 # Less control when bouncing
+		else: dir *= 0.05
+	elif !is_on_floor(): dir *= pow(modulate.a, 2) # Less control when taking damage
 	accel = Vector2(dir * INPUT_ACCEL, gravity)
+	
 	velocity += accel * delta
-	if is_on_floor():
+	if bounce_dir:
+		velocity.x *= 0.95
+	elif is_on_floor():
 		velocity.x *= 0.7
 	else:
 		velocity.x *= 0.9
-		
-	velocity.x = clampf(velocity.x, -max_speed.x, max_speed.x)
+	
+	if !bounce_dir:
+		velocity.x = clampf(velocity.x, -max_speed.x, max_speed.x)
 	velocity.y = clampf(velocity.y, -INF, max_speed.y)
 	
 	move_and_slide()
@@ -101,7 +109,6 @@ func _on_water_finder_body_entered(_body):
 	gravity = 200
 	max_speed.y = 50
 
-
 func _on_water_finder_body_exited(_body):
 	gravity = 400
 	max_speed.y = 200
@@ -119,4 +126,16 @@ func _on_water_finder_area_entered(area):
 				velocity.y = -120
 			else: 
 				velocity.y = -70
-			
+	elif area.is_in_group("side_shroom_l"):
+		$ShroomBounceTimer.start()
+		bounce_dir = -1
+		velocity.x = -290
+		velocity.y = -100
+	elif area.is_in_group("side_shroom_r"):
+		velocity.x = 290
+		velocity.y = -100
+		$ShroomBounceTimer.start()
+		bounce_dir = 1
+
+func _on_shroom_bounce_timer_timeout():
+	bounce_dir = 0
