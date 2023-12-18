@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cka2pe58eib2h"]
+
+[ext_resource type="Script" path="res://Content/Trigger/CameraOffsetTrigger.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+resource_local_to_scene = true
+size = Vector2(24, 24)
+
+[node name="CameraOffsetTrigger" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1")
+position_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")

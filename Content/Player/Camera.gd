@@ -1,14 +1,22 @@
 extends Camera2D
 
 var current_room = null
+var cam_offset = Vector2.ZERO
 
 func _ready():
 	Global.room_changed.connect(on_room_changed)
+	Global.set_camera_offset.connect(set_cam_offset)
+
+func set_cam_offset(new_offset, ignore_vector):
+	if ignore_vector.x == 0:
+		cam_offset.x = new_offset.x
+	if ignore_vector.y == 0:
+		cam_offset.y = new_offset.y
 
 func _physics_process(_delta):
 	var p = Global.get_unique("player")
 	if p:
-		global_position = p.global_position
+		global_position = p.global_position + cam_offset
 
 func set_camera_limits(room_shape):
 	var room_size = room_shape.shape.extents * 2

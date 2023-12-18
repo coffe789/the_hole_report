@@ -1,5 +1,6 @@
 extends Node2D
 
+signal set_camera_offset(offset, ignore_vector)
 signal room_changed(room)
 
 var is_map_ready = false
