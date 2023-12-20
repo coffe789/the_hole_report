@@ -43,12 +43,13 @@ func _on_pogo_tx_hitbox_body_entered(body):
 		enter()
 
 func _on_pogo_tx_hitbox_area_entered(area):
-	if area.is_in_group("shroom_box"):
-		target.velocity.y = -190
-	if area.is_in_group("shroom_box_l"):
-		target.velocity.y = -200
-		target.velocity.x -= 100
-	if area.is_in_group("shroom_box_r"):
-		target.velocity.y = -190
-		target.velocity.x += 100
-	_on_pogo_tx_hitbox_body_entered(null)
+	if !area.is_invincible:
+		if area.is_in_group("shroom_box"):
+			target.velocity.y = -190
+		if area.is_in_group("shroom_box_l"):
+			target.velocity.y = -200
+			target.velocity.x = -60
+		if area.is_in_group("shroom_box_r"):
+			target.velocity.y = -190
+			target.velocity.x = 60
+		_on_pogo_tx_hitbox_body_entered(null)

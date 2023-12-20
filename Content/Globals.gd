@@ -2,6 +2,7 @@ extends Node2D
 
 signal set_camera_offset(offset, ignore_vector)
 signal room_changed(room)
+signal set_cam_limit(limit_direction, limit_pos)
 
 var is_map_ready = false
 var money := 0

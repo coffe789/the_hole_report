@@ -6,6 +6,7 @@ var cam_offset = Vector2.ZERO
 func _ready():
 	Global.room_changed.connect(on_room_changed)
 	Global.set_camera_offset.connect(set_cam_offset)
+	Global.set_cam_limit.connect(set_limits)
 
 func set_cam_offset(new_offset, ignore_vector):
 	if ignore_vector.x == 0:
@@ -34,6 +35,7 @@ func on_room_changed(room):
 		
 		if Global.do_room_pause:
 			get_tree().paused = true
+			PhysicsServer2D.set_active(true)
 			await get_tree().create_timer(0.69).timeout
 			reset_smoothing()
 		for p in get_tree().get_nodes_in_group("projectile"):
@@ -44,3 +46,14 @@ func on_room_changed(room):
 		current_room.exit()
 	
 	current_room = room
+
+func set_limits(limit_type, limit_pos):
+	if limit_type == 0: # let cam go left
+		limit_right = limit_pos
+	elif limit_type == 1: # let cam go right
+		limit_left = limit_pos
+		limit_left = limit_pos
+	elif limit_type == 2: # above
+		limit_bottom = limit_pos
+	elif limit_type == 3: #below
+		limit_top = limit_pos

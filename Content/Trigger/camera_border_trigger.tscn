@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://51jabjkicwsp"]
+
+[ext_resource type="Script" path="res://Content/Trigger/CameraBorderTrigger.gd" id="1_6nkoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7uyid"]
+size = Vector2(200, 20)
+
+[node name="CameraBorderTrigger" type="Area2D"]
+process_mode = 3
+collision_layer = 0
+collision_mask = 64
+monitorable = false
+script = ExtResource("1_6nkoy")
+target_group = "water_finder"
+target_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7uyid")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

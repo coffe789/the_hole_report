@@ -22,7 +22,11 @@ func _input(event):
 			for room in get_tree().get_nodes_in_group("room"):
 				var is_mouse_in_room = extent2rect(room).has_point(get_tree().get_nodes_in_group("room")[0].get_viewport().get_mouse_position())
 				if is_mouse_in_room:
+					if is_instance_valid(selected_room):
+						selected_room.get_node("CollisionShape2D").modulate = selected_room.default_color
+					
 					selected_room = room
+					selected_room.get_node("CollisionShape2D").modulate = Color8(255,255,255,107)
 					
 					var editor_selection = null
 					if edi.get_selection().get_selected_nodes().size() > 0:

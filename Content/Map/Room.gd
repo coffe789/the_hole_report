@@ -7,6 +7,8 @@ const MIN_ROOM_HEIGHT = 126
 const UP_TRANSITION_BOOST = -150
 var resetables
 
+const default_color = Color8(255,255,255,50)
+
 func _ready():
 #	if int(position.x) != position.x or int(position.y) != position.y\
 #			or int(position.x) % 16 != 0 or int(position.y) % 16 != 0:
@@ -20,9 +22,9 @@ func _ready():
 	if !Engine.is_editor_hint():
 		resetables = $Resetables.create_scene()
 		$Resetables.queue_free()
-		modulate = Color(1,1,1,1)
+		$CollisionShape2D.modulate = default_color
 	else:
-		modulate = Color(1,1,1,1)
+		$CollisionShape2D.modulate = default_color
 		# modulate = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
 
 func enter():

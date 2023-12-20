@@ -2,7 +2,6 @@
 extends Area2D
 class_name Trigger
 
-
 enum P_mode {
 	NO_EFFECT,
 	TOP_TO_BOTTOM,

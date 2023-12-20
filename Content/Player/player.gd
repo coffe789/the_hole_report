@@ -130,10 +130,10 @@ func _on_water_finder_area_entered(area):
 		$ShroomBounceTimer.start()
 		bounce_dir = -1
 		velocity.x = -290
-		velocity.y = -100
+		velocity.y = -115
 	elif area.is_in_group("side_shroom_r"):
 		velocity.x = 290
-		velocity.y = -100
+		velocity.y = -115
 		$ShroomBounceTimer.start()
 		bounce_dir = 1
 
