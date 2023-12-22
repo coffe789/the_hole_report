@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bq3wv3vw2sqtm" path="res://Content/Util/Damage/rx_hitbox.tscn" id="2_yj4bi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enk3m"]
-size = Vector2(13, 8.75)
+size = Vector2(13, 4.375)
 
 [node name="SideShroom" type="Area2D"]
 collision_layer = 64
@@ -14,7 +14,7 @@ monitoring = false
 script = ExtResource("1_kyru8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 2)
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_enk3m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,5 +25,5 @@ centered = false
 [node name="RxHitbox" parent="." instance=ExtResource("2_yj4bi")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RxHitbox"]
-position = Vector2(2, 2)
+position = Vector2(2, -0.1875)
 shape = SubResource("RectangleShape2D_enk3m")

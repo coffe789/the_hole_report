@@ -25,7 +25,7 @@ func increment_idx():
 		$PogoTile.queue_free()
 
 func _input(_event):
-	if idx < len(code) - 1:
+	if is_player_inside and idx < len(code) - 1:
 		if Input.is_action_just_pressed("ui_up") and code[idx] == up:
 			increment_idx()	
 		elif Input.is_action_just_pressed("ui_down") and code[idx] == down:
