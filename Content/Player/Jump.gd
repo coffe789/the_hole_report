@@ -6,7 +6,6 @@ func enter():
 	target.get_node("Anim").custom_play("jump")
 	target.get_node("PrejumpTimer").stop()
 	target.get_node("CoyoteTimer").stop()
-#	print(target.velocity.y)
 
 func update(delta):
 	if !target.has_jump_ended && !Input.is_action_pressed("jump") && target.velocity.y < 0:

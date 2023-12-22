@@ -26,7 +26,10 @@ func set_camera_limits(room_shape):
 	limit_right = round(limit_left + room_size.x)
 	limit_bottom = round(limit_top + room_size.y)
 
+var next_room # For janky bug fix
 func on_room_changed(room):
+	next_room = room
+	
 	if current_room == null:
 		set_camera_limits(room.get_node("CollisionShape2D"))
 		reset_smoothing()

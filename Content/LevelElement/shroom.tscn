@@ -7,7 +7,7 @@
 size = Vector2(15, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsl0t"]
-size = Vector2(5.5, 2)
+size = Vector2(3.75, 2)
 
 [node name="Shroom" type="Area2D" groups=["shroom"]]
 collision_layer = 64
@@ -32,13 +32,13 @@ shape = SubResource("RectangleShape2D_jnruk")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(6, 2)
+position = Vector2(6.00001, 4.875)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_tsl0t")
 one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-7, 2)
+position = Vector2(-7, 5)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_tsl0t")
 one_way_collision = true

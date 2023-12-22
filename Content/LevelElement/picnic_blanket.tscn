@@ -11,6 +11,7 @@ size = Vector2(8, 34.5)
 [node name="PicnicBlanket" type="Sprite2D"]
 z_index = 5
 texture = ExtResource("1_l7fki")
+hframes = 2
 script = ExtResource("2_qmbrk")
 
 [node name="Interactable" parent="." instance=ExtResource("3_m16k1")]

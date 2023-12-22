@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cv38rbigdfn0e" path="res://Art/bloblin_xs-sheet.png" id="2_aw5xr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eagt2"]
-size = Vector2(6, 6.5)
+size = Vector2(6, 6)
 
 [node name="JumpBloblinExtraSmall" instance=ExtResource("1_uyll8")]
 hp = 1
@@ -14,7 +14,7 @@ position = Vector2(0, 2)
 texture = ExtResource("2_aw5xr")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(1, 3.25)
+position = Vector2(1, 3)
 shape = SubResource("RectangleShape2D_eagt2")
 
 [node name="CollisionShape2D" parent="RxHitbox" index="0"]

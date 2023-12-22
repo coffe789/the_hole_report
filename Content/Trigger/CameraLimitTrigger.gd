@@ -16,7 +16,6 @@ var old_limit_pos
 func _ready():
 	super()
 	set_limit_pos()
-	print("here exist")
 
 
 func on_enter():
@@ -27,7 +26,6 @@ func on_enter():
 
 func activate():
 	Global.emit_signal("set_cam_limit", limit_direction, limit_pos)
-	print("here set")
 
 func on_leave():
 	if unset_on_leave:

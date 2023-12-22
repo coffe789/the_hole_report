@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Content/Trigger/CameraBorderTrigger.gd" id="1_6nkoy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uyid"]
-size = Vector2(200, 20)
+size = Vector2(172, 20)
 
 [node name="CameraBorderTrigger" type="Area2D"]
 process_mode = 3

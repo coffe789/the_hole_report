@@ -91,14 +91,23 @@ func spike_respawn():
 		
 
 func die():
+	$RxHitbox.is_invincible = true
 	visible = false
 	await Global.death_wipe()
+
+	global_position = Global.death_respawn_pos
+	await get_tree().physics_frame # Stop ghost damage being triggered..
+	await get_tree().physics_frame
+
 	set_health(MAX_HP)
 	velocity = Vector2.ZERO
-	global_position = Global.death_respawn_pos
 	$SM.transition_state($SM/States/Fall)
 	$Anim.play("idle")
+	var cam = Global.get_unique("camera")
+	cam.set_camera_limits(cam.next_room.get_node("CollisionShape2D"))
+
 	visible = true
+	$RxHitbox.is_invincible = false
 
 
 func _on_spike_detect_body_entered(_body):
