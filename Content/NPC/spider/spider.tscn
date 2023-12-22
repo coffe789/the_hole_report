@@ -53,6 +53,11 @@ position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_152q6")
 
 [node name="VRay" type="RayCast2D" parent="."]
+position = Vector2(-4.25, 0)
+target_position = Vector2(0, 13)
+
+[node name="VRay2" type="RayCast2D" parent="."]
+position = Vector2(4.25, 0)
 target_position = Vector2(0, 13)
 
 [node name="RxHitbox" parent="." instance=ExtResource("2_wfp5u")]
